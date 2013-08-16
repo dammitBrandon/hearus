@@ -7,6 +7,11 @@ gem 'rails', '3.2.13'
 
 # gem 'sqlite3'
 gem 'pg'
+gem 'sunlight'
+gem 'geocoder'
+gem 'httparty'
+gem 'ym4r'
+gem 'gravatar_image_tag'
 
 
 # Gems used only for assets and not required
@@ -24,7 +29,7 @@ end
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
