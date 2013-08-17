@@ -73,7 +73,7 @@ namespace :seed do
               district.number = rep.district.to_i
               district.state = State.find_by_name(rep.state)
               district.state_name = rep.state
-              district.rep_name = "#{rep.title} #{rep.firstname} #{rep.lastname}"
+              district.rep_name = "#{rep.title}. #{rep.firstname} #{rep.lastname}"
               district.rep_phone = rep.phone
               district.rep_email_form = rep.webform
               district.rep_party = rep.party
