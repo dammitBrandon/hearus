@@ -20,7 +20,11 @@ class User < ActiveRecord::Base
   end
 
   def get_zipcode(zipcode)
-    set_district_by_zipcode(zipcode.strip.to_i)
+    if zipcode.class == String
+      set_district_by_zipcode(zipcode.strip.to_i)
+    else
+      set_district_by_zipcode(zipcode)
+    end
   end
 
   def get_coordinates(address)
@@ -30,6 +34,7 @@ class User < ActiveRecord::Base
     self.save
     set_district
   end
+
   protected
 
   def set_district_by_zipcode(zipcode)
