@@ -1,4 +1,4 @@
 Hearus::Application.routes.draw do
   resources :users
-  root :to => 'users#new'
+  root :to => 'landing#index'
 end
