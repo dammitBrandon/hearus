@@ -42,6 +42,15 @@ class User < ActiveRecord::Base
     self.rep_name = self.district.rep_name
     self.rep_twitter = self.district.rep_twitter
     self.rep_phone = self.district.rep_phone
+    self.rep_email_form = self.district.rep_email_form
+
+    self.rep_email_form = self.district.rep_email_form
+    self.rep_party = self.district.rep_party
+    self.rep_phone = self.district.rep_phone
+    self.rep_twitter = self.district.rep_twitter
+    self.rep_facebook = self.district.rep_facebook
+    self.rep_youtube = self.district.rep_youtube
+    self.rep_wiki = self.district.rep_wiki
     self.save
   end
 

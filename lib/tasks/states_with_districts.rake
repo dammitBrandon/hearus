@@ -63,6 +63,7 @@ namespace :seed do
       all_states = []
       State.all.each do |state|
         all_states << Sunlight::Legislator.all_where(:state => state.name)
+        puts "#{state.name} ready for districting!"
       end
 
       all_states.each do |state|
@@ -88,6 +89,12 @@ namespace :seed do
           end
         end
       end
+    end
+
+  desc "Add states and districts"
+    task :add_all => [:states, :districts] do
+      add_all
+      puts "states and districts creation complete!"
     end
 
 end
