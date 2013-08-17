@@ -3,12 +3,30 @@
 <head>
   <title>Hearus</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.1/pure-min.css">
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
+    <a href="/" class="pure-menu-heading">HearUs</a>
+    <ul>
+      <li class="pure-menu-selected"><a href="/">Register</a></li>
+      <li><a href="/">Login</a></li>
+    </ul>
+  </div>
 
-<%= yield %>
+  <div class="l-content">
+
+    <%= yield %>
+
+  </div> <!-- end l-content -->
+
+  <div class="footer">
+    <p class="l-box">
+      <a href="/">Contact</a> | <a href="/">Team</a> | <a href="/">About</a>
+    </p>
+  </div>
 
 </body>
 </html>
