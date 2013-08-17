@@ -18,6 +18,9 @@ gem 'omniauth-foursquare'
 gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
 gem 'koala'
+gem 'memcached'
+gem 'kgio'
+gem 'dalli'
 
 # Gems used only for assets and not required
 # in production environments by default.
