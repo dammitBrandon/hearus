@@ -1,10 +1,11 @@
 class User < ActiveRecord::Base
+  belongs_to :district
   attr_accessible :email,
                   :first_name,
                   :last_name,
                   :password,
                   :username
-  after_update :set_representative, :if => :district_id_changed?
+  # after_update :set_district, :if => :district_id_changed?
 
   validates_presence_of :email,
                         :password
@@ -18,15 +19,31 @@ class User < ActiveRecord::Base
 
   end
 
+  def get_coordinates(address)
+    coordinates = Geocoder.coordinates(address)
+    self.latitude = coordinates[0]
+    self.longitude = coordinates[1]
+    self.save
+    set_district
+  end
   protected
 
-  def set_representative
-    district = District.find(self.district_id)
-    user.rep_name = district.rep_name
-    user.rep_email = district.rep_email
-    user.rep_twitter = district.rep_twitter
-    user.rep_phone = district.rep_phone
-    user.save
+  def set_district
+    district = Sunlight::District.get(:latitude => self.latitude,
+                           :longitude => self.longitude)
+    self.district = District.find_by_number(district.number.to_i)
+    self.state = district.state
+    self.district_number = district.number.to_i
+    self.save
+    set_representative
   end
+
+  def set_representative
+    self.rep_name = self.district.rep_name
+    self.rep_twitter = self.district.rep_twitter
+    self.rep_phone = self.district.rep_phone
+    self.save
+  end
+
 end
 
