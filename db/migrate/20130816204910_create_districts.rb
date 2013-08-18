@@ -3,7 +3,8 @@ class CreateDistricts < ActiveRecord::Migration
     create_table :districts do |t|
       t.integer    :number
       t.belongs_to :state
-      t.string     :state_name
+      t.string     :state_abbreviation
+      t.string     :state_full_name
 
       #denormalization
       t.string     :rep_name

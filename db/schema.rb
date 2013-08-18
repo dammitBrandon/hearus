@@ -16,7 +16,8 @@ ActiveRecord::Schema.define(:version => 20130816204922) do
   create_table "districts", :force => true do |t|
     t.integer  "number"
     t.integer  "state_id"
-    t.string   "state_name"
+    t.string   "state_abbreviation"
+    t.string   "state_full_name"
     t.string   "rep_name"
     t.string   "rep_email_form"
     t.string   "rep_party"
@@ -25,25 +26,27 @@ ActiveRecord::Schema.define(:version => 20130816204922) do
     t.string   "rep_facebook"
     t.string   "rep_youtube"
     t.string   "rep_wiki"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "states", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "abbreviation"
+    t.string   "full_name"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "username"
-    t.string   "email",           :null => false
-    t.string   "password_digest", :null => false
+    t.string   "email",              :null => false
+    t.string   "password_digest",    :null => false
     t.integer  "district_id"
     t.integer  "district_number"
-    t.string   "state_name"
+    t.string   "state_abbreviation"
+    t.string   "state_full_name"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "rep_name"
@@ -54,8 +57,8 @@ ActiveRecord::Schema.define(:version => 20130816204922) do
     t.string   "rep_facebook"
     t.string   "rep_youtube"
     t.string   "rep_wiki"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
 end
