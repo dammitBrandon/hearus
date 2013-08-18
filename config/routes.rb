@@ -1,4 +1,9 @@
 Hearus::Application.routes.draw do
   resources :users
-  root :to => 'landing#index'
+  resources :district
+
+  get  'district/find', to: 'district#new', as: :find_district
+  post 'district/find', to: 'district#create', as: :set_district
+
+  root :to => 'landing#show'
 end
