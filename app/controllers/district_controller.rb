@@ -7,7 +7,7 @@ class DistrictController < ApplicationController
 
   def create
     if current_user
-      @user = RegularUser.find(current_user.id)
+      @user = User.find(current_user.id)
     end
     @zipcode = params[:zipcode]
   end
