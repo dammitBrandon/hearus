@@ -53,7 +53,7 @@ namespace :seed do
                 ["WV", "West Virginia"],
                 ["WY", "Wyoming"] ]
       states.each do |state|
-        State.create(name: state[0])
+        State.create(abbreviation: state[0], full_name: state[1] )
         puts "#{state[0]} created!"
       end
     end
@@ -62,8 +62,8 @@ namespace :seed do
     task :districts => :environment do
       all_states = []
       State.all.each do |state|
-        all_states << Sunlight::Legislator.all_where(:state => state.name)
-        puts "#{state.name} ready for districting!"
+        all_states << Sunlight::Legislator.all_where(:state => state.abbreviation)
+        puts "#{state.full_name} ready for districting!"
       end
 
       all_states.each do |state|
@@ -71,18 +71,23 @@ namespace :seed do
           if rep.title == "Rep"
             district = District.new
               district.number = rep.district.to_i
-              district.state = State.find_by_name(rep.state)
-              district.state_name = rep.state
+              district.state = State.find_by_abbreviation(rep.state)
+              district.state_full_name = district.state.full_name
+              district.state_abbreviation = rep.state
               district.rep_name = "#{rep.title}. #{rep.firstname} #{rep.lastname}"
               district.rep_phone = rep.phone
-              district.rep_email_form = rep.webform
+              if district.rep_name == "Rep. Greg Walden"
+                district.rep_email_form = "https://walden.house.gov/e-mail-greg"
+              else
+                district.rep_email_form = rep.webform
+              end
               district.rep_party = rep.party
               district.rep_twitter = "@#{rep.twitter_id}"
               district.rep_facebook = rep.facebook_id
               district.rep_youtube = rep.youtube_url
               district.rep_wiki = rep.congresspedia_url
             if district.save
-              puts "#{district.state_name} district:#{district.number} saved!"
+              puts "#{district.state_abbreviation} district:#{district.number} saved!"
             else
               puts "Save failed, here's why: #{district.errors.full_messages}"
             end
@@ -93,7 +98,6 @@ namespace :seed do
 
   desc "Add states and districts"
     task :add_all => [:states, :districts] do
-      add_all
       puts "states and districts creation complete!"
     end
 

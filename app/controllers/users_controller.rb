@@ -2,18 +2,22 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-  
+
   def create
-    @user = User.create(params[:user])
-    if @user.valid?
-      redirect_to @user
+    @user = User.new(params[:user])
+    if @user.save
+      redirect_to root_path
     else
-      @user.errors.delete(:password_digest) if @user.errors[:password_digest]
-      render :new
+      @errors = @user.errors.full_messages
+      render "users/new"
     end
   end
 
   def show
-    @user = User.find(params[:id])
+    if current_user?
+     @user = current_user
+    else
+      redirect_to "new"
+    end
   end
 end
