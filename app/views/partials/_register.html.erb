@@ -1,4 +1,17 @@
- <p>&nbsp;<br>
+<p>&nbsp;<br>
+<p>Log in with: 
+<a style="text-decoration:none;" href="/auth/twitter">
+<span class="icon-stack">
+  <i class="icon-check-empty icon-stack-base"></i>
+  <i class="icon-twitter"></i>
+</span>
+</a>
+<a style="text-decoration:none;" href="/auth/facebook">
+<span class="icon-stack">
+  <i class="icon-check-empty icon-stack-base"></i>
+  <i class="icon-facebook"></i>
+</span>
+</a><br>Or register using an email address:
    <%= form_for @user, :url => (@user.new_record? ? users_path : user_path(@user)), html: {class: "pure-form pure-form-stacked"} do |f| %>
      <label for="email" style="color:white;float:right;">Email</label>
      <%= f.text_field :email, placeholder: "Email", autofocus: true %>
