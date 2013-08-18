@@ -3,6 +3,7 @@ class DistrictController < ApplicationController
   end
 
   def create
+    @user = RegularUser.find(current_user.id)
     @zipcode = params[:zipcode]
   end
 

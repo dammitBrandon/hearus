@@ -20,7 +20,7 @@
       <% if !@user %>
         <%= link_to "Login", login_path %>
         <%= link_to "Register", user_path %>
-      <% elsif @user.email %>
+      <% elsif @user.id %>
         <%= link_to "Profile", users_path %>
         <%= link_to "Logout", logout_path %>
       <% else %>
