@@ -4,17 +4,12 @@
   </div>
 
   <div class="pure-u-1-2">
-    <p>&nbsp;<br>
-    <%= form_for :zip_code, url: users_path, html: { class: "pure-form" } do |f| %>
-      <label for="search" style="color:white;float:right;">Zip Code</label>
-      <%= f.text_field :search, placeholder: "Zip Code", autofocus: true %>
-      <%= f.submit "Go", class: "pure-button pure-button-primary" %>
-    <% end %>
+    <%= render partial: "partials/zipcode" %>
       <a class="openmodalbox" href="javascript:void(0);">
-<span class="icon-stack">
-  <i class="icon-circle-blank icon-stack-base"></i>
-  <i class="icon-question"></i>
-</span>
+        <span class="icon-stack">
+          <i class="icon-circle-blank icon-stack-base"></i>
+          <i class="icon-question"></i>
+        </span>
         <span class="modalboxContent">
           <h3>Zipcode Search</h3>
           Enter your zipcode and find your local representative.<br>
