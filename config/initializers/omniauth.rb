@@ -4,10 +4,7 @@ OmniAuth.config.logger = Rails.logger
 
 Rails.application.config.middleware.use OmniAuth::Builder do
 
-  provider :facebook, APP_CONFIG['fb_app_id'], APP_CONFIG['fb_secret'], {
-    :client_options => { :ssl => APP_CONFIG["ssl_certs"] },
-    :scope => APP_CONFIG["fb_permissions"]
-  }
+  provider :facebook, ENV['HEARUS_FACEBOOK_ID'], ENV['HEARUS_FACEBOOK_SECRET']
 
   provider :foursquare, APP_CONFIG['foursquare_id'], APP_CONFIG['foursquare_secret'], {
     :client_options => { :ssl => APP_CONFIG["ssl_certs"] }
