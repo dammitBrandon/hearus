@@ -21,6 +21,7 @@
         <%= link_to "Login", login_path %>
         <%= link_to "Register", user_path %>
       <% else %>
+        <%= link_to "Profile", users_path %>
         <%= link_to "Logout", logout_path %>
       <% end %>
     </p>

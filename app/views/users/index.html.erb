@@ -5,7 +5,22 @@
 
   <div class="pure-u-1-2">
     <p>Email: <%= @user.email %>
-      <p><%= link_to "Profile", users_path(@user.id) %>
+    <div id="latlng">
+      <p><button onclick="geoLocate()">Detect My Location</button>
+      &nbsp;
+    </div>
+    <a class="openmodalbox" href="javascript:void(0);">
+      <span class="icon-stack">
+        <i class="icon-circle-blank icon-stack-base"></i>
+        <i class="icon-question"></i>
+      </span>
+      <span class="modalboxContent">
+        <h3>Detect Location</h3>
+        With your permission, we can auto-detect location for you.<br>
+        We respect privacy (link_to privacy_path).
+        We never store your location without permission.
+      </span>
+    </a>
   </div>
 
   <div class="pure-u-1-4">
