@@ -10,7 +10,9 @@ function geoLocate() {
     var latitude  = position.coords.latitude;
     var longitude = position.coords.longitude;
 
-    $.post('http://localhost:3000/district/find', {latitude: latitude, longitude: longitude});
+    $.post('http://localhost:3000/district/find', {latitude: latitude, longitude: longitude}, function() {
+      alert("POST action to district/find:\n\n" + latitude + "\n" + longitude);
+      });
 
     output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°';
 
