@@ -3,7 +3,7 @@ class DistrictController < ApplicationController
   end
 
   def create
-    @latlong = params[:zipcode]
+    @zipcode = params[:zipcode]
   end
 
 end

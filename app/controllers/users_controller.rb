@@ -36,7 +36,7 @@ class UsersController < ApplicationController
       render action: 'edit'
     end
   end
-  
+
   private
 
     def matched_user
