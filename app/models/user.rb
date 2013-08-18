@@ -1,22 +1,38 @@
 class User < ActiveRecord::Base
+  has_many :accounts, :dependent => :destroy
   belongs_to :district
   attr_accessible :email,
                   :first_name,
                   :last_name,
                   :password,
-                  :username
+                  :username,
+                  :password_confirmation
+
   # after_update :set_representative, :if => :district_id_changed?
 
-  validates_presence_of :email,
-                        :password
-
-  validates :email,  uniqueness: true,
-                     format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, message: "%{value} is not a valid email address." }
-
-  has_secure_password
-
+  # commented for use with new oauth method, appears in RegularUser model
+  # validates_presence_of :email,
+  #                      :password
+  # validates :email,  uniqueness: true,
+  #                   format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, message: "%{value} is not a valid email address." }
+  # has_secure_password
+  # end comment section, though twitter method below should do something
+  #
+  #
   def send_tweet
 
+  end
+
+  def has_facebook?
+    accounts.where(provider: 'facebook').any?
+  end
+
+  def has_twitter?
+    accounts.where(provider: 'twitter').any?
+  end
+
+  def has_foursquare?
+    accounts.where(provider: 'foursquare').any?
   end
 
   def get_zipcode(zipcode)

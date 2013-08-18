@@ -4,3 +4,14 @@
     <%= text_field_tag "zipcode", nil, :size => 12, :maxlength => 5, placeholder: "Zip Code", autofocus: true %>
     <%= submit_tag "Go", :class => "pure-button pure-button-primary" %>
   <% end %>
+    <a class="openmodalbox" href="javascript:void(0);">
+      <span class="icon-stack">
+        <i class="icon-circle-blank icon-stack-base"></i>
+        <i class="icon-question"></i>
+      </span>
+      <span class="modalboxContent">
+        <h3>Zipcode Search</h3>
+        Enter your zipcode and find your local representative.<br>
+        We respect privacy (link_to privacy_path).
+      </span>
+    </a>

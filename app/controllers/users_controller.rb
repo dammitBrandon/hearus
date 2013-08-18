@@ -1,23 +1,46 @@
 class UsersController < ApplicationController
-  def index
-    @user = User.all
-  end
-  
+  before_filter :matched_user, only: [:edit, :destroy]
+  # before_filter :authenticate_user!, only: [:edit, :update]
+
   def new
-    @user = User.new
+    @user = RegularUser.new
   end
-  
+
   def create
-    @user = User.create(params[:user])
-    if @user.valid?
-      redirect_to @user
+    @user = RegularUser.new(params[:regular_user])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to root_path
     else
-      @user.errors.delete(:password_digest) if @user.errors[:password_digest]
-      render :new
+      render action: 'new'
     end
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = RegularUser.find(current_user.id)
   end
+
+  def index
+    @user = RegularUser.find(current_user.id)
+  end
+
+  def edit
+    @user = RegularUser.find(current_user.id)
+  end
+
+  def update
+    @user = RegularUser.find(current_user.id)
+    if @user.update_attributes(params[:regular_user])
+      redirect_to root_path
+    else
+      render action: 'edit'
+    end
+  end
+  
+  private
+
+    def matched_user
+      redirect_to root_url unless current_user && params[:id] == current_user.id
+    end
+
 end

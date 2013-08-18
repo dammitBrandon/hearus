@@ -4,8 +4,7 @@
   </div>
 
   <div class="pure-u-1-2">
-    <p>Email: <%= @user.email %>
-      <p><%= link_to "Profile", users_path(@user.id) %>
+    <%= render partial: "partials/session" %>
   </div>
 
   <div class="pure-u-1-4">

@@ -8,7 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="l-content">
+  <div style="margin-bottom:80px;" class="l-content">
 
     <%= yield %>
 
@@ -16,9 +16,13 @@
 
   <div class="footer">
     <p class="l-box">
-      <%= link_to "Login", users_path %>
-      <%= link_to "About", users_path %>
-      <%= link_to "Register", users_path %>
+      <%= link_to "Home", root_path %>
+      <% if !@user %>
+        <%= link_to "Login", login_path %>
+        <%= link_to "Register", user_path %>
+      <% else %>
+        <%= link_to "Logout", logout_path %>
+      <% end %>
     </p>
   </div>
 
