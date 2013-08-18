@@ -1,10 +1,19 @@
- <p>&nbsp;<br>
-    <% if @error %>
-      <p><%= @error %></p>
-    <% end %>
+<p>&nbsp;<br>
+<% if @error %>
+  <p><%= @error %></p>
+<% end %>
     
-      <%= form_for :user, html: {class: "pure-form pure-form-stacked"} do |f| %>
-      <%= f.text_field :email, placeholder: "Email", autofocus: true %>
-      <%= f.password_field :password, placeholder: "Password" %>
-      <%= f.submit "Login", class: "pure-button pure-button-primary" %>
-    <% end %>
+<%= form_for :user, html: {class: "pure-form pure-form-stacked"} do |f| %>
+  <%= f.text_field :email, placeholder: "Email", autofocus: true %>
+  <%= f.password_field :password, placeholder: "Password" %>
+  <%= f.submit "Login", class: "pure-button pure-button-primary" %>
+<% end %>
+
+<p> <a style="text-decoration:none;" href="/auth/twitter">
+<span class="icon-stack">
+  <i class="icon-check-empty icon-stack-base"></i>
+  <i class="icon-twitter"></i>
+</span>
+</a>
+Log in with Twitter? 
+</p>

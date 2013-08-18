@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20130818033518) do
     t.string   "username"
     t.string   "oauth_token"
     t.string   "oauth_secret"
+    t.string   "provider"
     t.datetime "oauth_expires"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
@@ -52,8 +53,8 @@ ActiveRecord::Schema.define(:version => 20130818033518) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "username"
-    t.string   "email",           :null => false
-    t.string   "password_digest", :null => false
+    t.string   "email"
+    t.string   "password_digest"
     t.integer  "district_id"
     t.integer  "district_number"
     t.string   "state_name"

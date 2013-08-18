@@ -4,8 +4,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string     :first_name
       t.string     :last_name
       t.string     :username
-      t.string     :email, null: false
-      t.string     :password_digest, null: false
+      t.string     :email
+      t.string     :password_digest
       t.belongs_to :district
       t.integer    :district_number
       t.string     :state_name

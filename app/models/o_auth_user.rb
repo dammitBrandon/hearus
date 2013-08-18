@@ -57,7 +57,6 @@ class OAuthUser
         :first_name => @policy.first_name,
         :last_name  => @policy.last_name,
         :email      => @policy.email,
-        :picture    => image
       )
     end
 

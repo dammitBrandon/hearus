@@ -13,9 +13,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     :client_options => { :ssl => APP_CONFIG["ssl_certs"] }
   }
 
-  provider :twitter, APP_CONFIG['twitter_id'], APP_CONFIG['twitter_secret'], {
-    :client_options => { :ssl => APP_CONFIG["ssl_certs"] }
-  }
+  provider :twitter, ENV['HEARUS_TWITTER_ID'], ENV['HEARUS_TWITTER_SECRET']
 
   provider :linkedin, APP_CONFIG['linkedin_id'], APP_CONFIG['linkedin_secret'], :scope => APP_CONFIG["linkedin_permissions"]
 

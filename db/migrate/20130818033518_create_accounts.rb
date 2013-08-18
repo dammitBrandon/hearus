@@ -6,6 +6,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :username
       t.string :oauth_token
       t.string :oauth_secret
+      t.string :provider
       t.datetime :oauth_expires
 
       t.timestamps

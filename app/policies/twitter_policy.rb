@@ -21,6 +21,8 @@ class TwitterPolicy
   end
 
   def image_url
+    # NOTE: the twitter v1 api for user profiles used here is deprecated; if we
+    #       want avatars to work we'll need to get the v1.1 api working
     "https://api.twitter.com/1/users/profile_image?screen_name=#{@auth.info.nickname}&size=original"
   end
 
