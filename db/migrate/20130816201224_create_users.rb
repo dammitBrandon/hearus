@@ -8,7 +8,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string     :password_digest, null: false
       t.belongs_to :district
       t.integer    :district_number
-      t.string     :state_name
+      t.string     :state_abbreviation
+      t.string     :state_full_name
       t.float      :latitude
       t.float      :longitude
 
