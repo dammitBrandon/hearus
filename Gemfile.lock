@@ -45,6 +45,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    dalli (2.6.4)
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -67,6 +68,7 @@ GEM
     json (1.8.0)
     jwt (0.1.8)
       multi_json (>= 1.5)
+    kgio (2.8.0)
     koala (1.6.0)
       addressable (~> 2.2)
       faraday (~> 0.8)
@@ -74,10 +76,14 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memcached (1.7.0)
     mime-types (1.24)
+    mini_portile (0.5.1)
     multi_json (1.7.9)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     oauth (0.4.7)
     oauth2 (0.8.1)
       faraday (~> 0.8)
@@ -163,11 +169,15 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   coffee-rails (~> 3.2.1)
+  dalli
   geocoder
   gravatar_image_tag
   httparty
   jquery-rails
+  kgio
   koala
+  memcached
+  nokogiri
   oauth
   omniauth
   omniauth-facebook (= 1.4.0)
