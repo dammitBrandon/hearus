@@ -3,18 +3,31 @@
   </div>
 
   <div class="pure-u-1-2">
-    <p>Synchronize accounts here
-    <p>Email: <%= @user.email %>
-    <div id="latlng">
-      <p><button onclick="geoLocate()">Detect My Location</button>
-      &nbsp;
-    </div>
-    <a href="#" class="tour-start">
+    <p>&nbsp;<br>
+    <a href="#" class="start-profile-tour">
       <span class="icon-stack">
         <i class="icon-circle-blank icon-stack-base"></i>
         <i class="icon-question"></i>
       </span>
     </a>
+      <p>Synchronize accounts here:<br>
+<a style="text-decoration:none;" href="/auth/twitter">
+<span class="icon-stack">
+  <i class="icon-check-empty icon-stack-base"></i>
+  <i class="icon-twitter"></i>
+</span>
+</a>
+<a style="text-decoration:none;" href="/auth/facebook">
+<span class="icon-stack">
+  <i class="icon-check-empty icon-stack-base"></i>
+  <i class="icon-facebook"></i>
+</span>
+<a>
+    <p>Email: <%= @user.email %>
+    <div id="latlng">
+      <p><button onclick="geoLocate()">Detect My Location</button>
+      &nbsp;
+    </div>
   </div>
 
   <div class="pure-u-1-4">
