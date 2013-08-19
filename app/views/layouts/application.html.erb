@@ -21,7 +21,7 @@
       <% if !@user %>
         <%= link_to "Login", new_session_path %>
         <%= link_to "Register", new_user_path %>
-      <% elsif @user.id %>
+      <% elsif @user %>
         <%= link_to "Profile", users_path %>
         <%= link_to "Logout", logout_path %>
       <% else %>

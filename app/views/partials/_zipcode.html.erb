@@ -1,5 +1,5 @@
  <p>&nbsp;<br>
-  <%= form_tag set_district_path, :method => 'post', :class => "pure-form" do %>
+  <%= form_tag set_districts_path, :method => 'post', :class => "pure-form" do %>
     <label for="zipcode" style="color:white;float:right;">Zip Code</label>
     <%= text_field_tag "zipcode", nil, :size => 12, :maxlength => 5, placeholder: "Zip Code", autofocus: true %>
     <%= submit_tag "Go", :class => "pure-button pure-button-primary" %>
