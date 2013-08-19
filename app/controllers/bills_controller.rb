@@ -2,8 +2,8 @@ class BillsController < ApplicationController
   def find
   end
 
-  def view
-    @current_bill = Bill.view_bill(params[:bill_id])
+  def show
+    @bill = Bill.view_bill(params[:unique_bill_id])
     #all keys are strings
     #chamber
     #congress
@@ -18,4 +18,6 @@ class BillsController < ApplicationController
 
   def create
   end
+
+
 end

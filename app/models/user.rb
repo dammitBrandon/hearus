@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_many :accounts, :dependent => :destroy
+  has_many :votes
+
   belongs_to :district
   attr_accessible :email,
                   :first_name,

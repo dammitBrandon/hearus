@@ -2,13 +2,13 @@ Hearus::Application.routes.draw do
   # get  'district/find', to: 'district#new', as: :find_district
   # post 'district/find', to: 'district#create', as: :set_district
 
-  resource :bill do
+  resources :bills do
     collection do
       get :find
-      get :view
-      post :vote
     end
   end
+
+  resources :votes
 
   resources :users
   resources :districts do
