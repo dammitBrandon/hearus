@@ -4,7 +4,7 @@ class BillsController < ApplicationController
   end
 
   def show
-    @bill = Bill.view_bill(params[:unique_bill_id])
+    @bill = Bill.view_bill(params[:bill_id])
     #all keys are strings
     #chamber
     #congress

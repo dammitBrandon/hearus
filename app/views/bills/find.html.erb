@@ -11,6 +11,11 @@
       </span>
     </a>
       <p>Find bills here<br>
+        <p><% @bills.each do |bill| %>
+          <%= bill["short_title"] %>
+          <%= bill["bill_id"] %>
+
+        <% end %>
   </div>
 
   <div class="pure-u-1-4">
