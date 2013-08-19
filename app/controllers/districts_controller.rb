@@ -18,11 +18,11 @@ class DistrictsController < ApplicationController
 
   def set
     if params[:zipcode]
-      @district = get_zipcode(params[:zipcode])
+      @district = Location.get_zipcode(params[:zipcode])
     elsif params[:address]
-      @district = get_coordinates(params[:address])
+      @district = Location.get_coordinates(params[:address])
     elsif params[:latitude]
-      @district = set_district_by_coordinates(params[:latitude], params[:longitude])
+      @district = Location.set_district_by_coordinates(params[:latitude], params[:longitude])
     end
 
     if @district
