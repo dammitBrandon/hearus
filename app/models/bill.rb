@@ -10,7 +10,7 @@ class Bill < ActiveRecord::Base
 
   def self.keyword_string(query_string)
     base = "http://congress.api.sunlightfoundation.com/bills/search?query="
-    base += query_string + "&"
+    base += query_string + "&history.enacted=false&"
     base + "apikey=" + Sunlight::Base.api_key
   end
 
@@ -47,6 +47,6 @@ class Bill < ActiveRecord::Base
       # puts bill["search"]["highlight"]
       # puts "search highlight text"
       # puts bill["search"]["highlight"]["text"]
-    end; 0
+    end
   end
 end
