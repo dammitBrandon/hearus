@@ -1,5 +1,4 @@
-class Bill < ActiveRecord::Base
-
+class Bill
 
   def self.search_query(params)
     url = self.keyword_string(params)
