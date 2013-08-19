@@ -1,0 +1,27 @@
+  <div class="pure-u-1-4">
+    &nbsp;
+  </div>
+
+  <div class="pure-u-1-2">
+    <p>&nbsp;<br>
+    <a href="#" class="start-bill-tour">
+      <span class="icon-stack">
+        <i class="icon-circle-blank icon-stack-base"></i>
+        <i class="icon-question"></i>
+      </span>
+    </a>
+      <p>See bills here:<br>
+        <p>Bill:
+          <h4> <%= @bill["short_title"] %> </h4>
+          <h5> <%= @bill["introduced_on"] %> </h5>
+          <h5> <%= @bill["sponsor_id"] %> </h5>
+          <a href="#"><%= @bill["last_version"]["urls"]["pdf"] %></a><br>
+          <a href="#"><%= @bill["last_version"]["urls"]["xml"] %></a><br>
+          <a href="#"><%= @bill["urls"]["opencongress"] %></a><br>
+          <a href="#"><%= @bill["urls"]["govtrack"] %></a><br>
+          <a href="#"><%= @bill["urls"]["congress"] %></a>
+  </div>
+
+  <div class="pure-u-1-4">
+    &nbsp;
+  </div>
