@@ -1,4 +1,7 @@
 class DistrictsController < ApplicationController
+
+  include DistrictHelper
+
   def index
   end
 
@@ -15,17 +18,19 @@ class DistrictsController < ApplicationController
   end
 
   def set
-      @district = Location.get_zipcode(params[:zipcode])  if params[:zipcode]
-      @district = Location.get_coordinates("#{params[:address]}, #{params[:city]}, #{params[:state]}") if params[:address] && params[:city] && params[:state]
-      @district = Location.set_district_by_coordinates(params[:latitude], params[:longitude]) if params[:latitude] && params[:longitude]
-
-    if @district
-      session[:district_id] = @district.id
-      current_user.set_representative(@district.id) if current_user?
-      redirect_to district_path(@district)
+    district = get_location
+    if district
+      session[:district_id] = district.id
+      current_user.set_representative(district.id) if current_user?
+      redirect_to district_path(district)
     else
       redirect_to find_districts_path
     end
   end
+
+  private
+
+
+
 end
 

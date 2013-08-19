@@ -1,5 +1,5 @@
 class Location
-    def self.get_zipcode(zipcode)
+  def self.get_zipcode(zipcode)
     if zipcode.class == String
       self.set_district_by_zipcode(zipcode.strip.to_i)
     else
