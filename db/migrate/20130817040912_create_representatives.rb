@@ -1,5 +1,6 @@
 class CreateRepresentatives < ActiveRecord::Migration
-  create_table :representatives do |t|
+  def change
+    create_table :representatives do |t|
     t.string :first_name
     t.string :middle_name
     t.string :last_name
@@ -18,4 +19,6 @@ class CreateRepresentatives < ActiveRecord::Migration
     t.string :facebook_id
     t.string :birthday
     t.timestamps
+    end
+  end
 end
