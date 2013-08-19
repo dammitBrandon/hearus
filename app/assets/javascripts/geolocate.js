@@ -10,11 +10,11 @@ function geoLocate() {
     var latitude  = position.coords.latitude;
     var longitude = position.coords.longitude;
 
-    $.post('http://localhost:3000/district/find', {latitude: latitude, longitude: longitude}, function() {
-      alert("POST action to district/find:\n\n" + latitude + "\n" + longitude);
+    $.post('http://localhost:3000/districts/set', {latitude: latitude, longitude: longitude}, function(response) {
+        window.location = response.url;
       });
 
-    output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°';
+    // output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°';
 
     // var img = new Image();
     // img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
