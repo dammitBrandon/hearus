@@ -15,6 +15,7 @@ class CreateDistricts < ActiveRecord::Migration
       t.string     :rep_facebook
       t.string     :rep_youtube
       t.string     :rep_wiki
+      t.string     :bioguide_id
 
      t.timestamps
     end
