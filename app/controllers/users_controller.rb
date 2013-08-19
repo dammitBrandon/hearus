@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :matched_user, only: [:edit, :destroy]
+  before_filter :find_user, :except => [:new, :create]
 
   def new
     @user = RegularUser.new
@@ -17,19 +18,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = RegularUser.find(current_user.id)
+    @user
   end
 
   def index
-    @user = RegularUser.find(current_user.id)
+    @user
   end
 
   def edit
-    @user = RegularUser.find(current_user.id)
+    @user
   end
 
   def update
-    @user = RegularUser.find(current_user.id)
     if @user.update_attributes(params[:regular_user])
       redirect_to root_path
     else
@@ -39,8 +39,12 @@ class UsersController < ApplicationController
 
   private
 
-    def matched_user
-      redirect_to root_url unless current_user && params[:id] == current_user.id
-    end
+  def find_user
+    @user = RegularUser.find(current_user.id)
+  end
+
+  def matched_user
+    redirect_to root_url unless current_user && params[:id] == current_user.id
+  end
 
 end
