@@ -1,4 +1,10 @@
-<p>&nbsp;<br>
+   <p>&nbsp;<br>
+     <a href="#" class="start-register-tour">
+        <span class="icon-stack">
+          <i class="icon-circle-blank icon-stack-base"></i>
+          <i class="icon-question"></i>
+        </span>
+     </a>
 <p>Log in with: 
 <a style="text-decoration:none;" href="/auth/twitter">
 <span class="icon-stack">
@@ -11,24 +17,13 @@
   <i class="icon-check-empty icon-stack-base"></i>
   <i class="icon-facebook"></i>
 </span>
-</a><br>Or register using an email address:
+</a><br>Or register with your email:
    <%= form_for @user, :url => (@user.new_record? ? users_path : user_path(@user)), html: {class: "pure-form pure-form-stacked"} do |f| %>
      <label for="email" style="color:white;float:right;">Email</label>
-     <%= f.text_field :email, placeholder: "Email", autofocus: true %>
+     <%= f.text_field :email, placeholder: "Email", class: "step1", autofocus: true %>
      <label for="password" style="color:white;float:right;">Password</label>
      <%= f.password_field :password, placeholder: "Password" %>
      <label for="password_confirmation" style="color:white;float:right;">Password Confirmation</label>
      <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
      <%= f.submit "Register", class: "pure-button pure-button-primary" %>
    <% end %>
-      <a class="openmodalbox" href="javascript:void(0);">
-        <span class="icon-stack">
-          <i class="icon-circle-blank icon-stack-base"></i>
-          <i class="icon-question"></i>
-        </span>
-        <span class="modalboxContent">
-          <h3>Zipcode Search</h3>
-          Enter your zipcode and find your local representative.<br>
-          We respect privacy (link_to privacy_path).
-        </span>
-      </a>

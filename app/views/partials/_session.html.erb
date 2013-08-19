@@ -1,4 +1,10 @@
-<p>&nbsp;<br>
+   <p>&nbsp;<br>
+     <a href="#" class="start-login-tour">
+        <span class="icon-stack">
+          <i class="icon-circle-blank icon-stack-base"></i>
+          <i class="icon-question"></i>
+        </span>
+     </a>
 <p>Log in with: 
 <a style="text-decoration:none;" href="/auth/twitter">
 <span class="icon-stack">
@@ -11,16 +17,14 @@
   <i class="icon-check-empty icon-stack-base"></i>
   <i class="icon-facebook"></i>
 </span>
-</a><br>Or using an email address:
+</a><br>Or login with your email:
 <% if @error %>
   <p><%= @error %></p>
 <% end %>
-
- <p>&nbsp;<br>
-  <%= form_tag sessions_path, :method => 'post', :class => "pure-form" do %>
+  <%= form_tag sessions_path, :method => 'post', :class => "pure-form pure-form-stacked" do %>
     <label for="email" style="color:white;float:right;">Email</label>
-    <%= text_field_tag "email", nil, :size => 12, placeholder: "Email Here", autofocus: true %>
+    <%= text_field_tag "email", nil, placeholder: "Email", class: "step1", autofocus: true %>
     <label for="password", style="color:white;float:right;">Password</label>
-    <%= password_field_tag "password", nil, :size => 12, placeholder: "Password Here"%>
+    <%= password_field_tag "password", nil, placeholder: "Password"%>
     <%= submit_tag "Sign In", :class => "pure-button pure-button-primary" %>
   <% end %>

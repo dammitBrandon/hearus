@@ -645,9 +645,194 @@ $(document).ready(function() {
     var trip = new Trip([
         { 
             sel : $('.step1'), 
-            position : 'n', 
-            content : 'Hi, I am Trip.js', 
-            delay : 2000,
+            position : 's', 
+            content : '<h4>Your Representative</h4>Your local representative<br>contact information includes<br>Twitter, Facebook and Email<br>Find them by Zip Code here.<br>&nbsp\;', 
+            delay : 10000,
+            callback : function(i) {
+                console.log("step "+ i +" is finished");
+            }
+        }
+    ], {
+        tripTheme : "black",
+        onTripStart : function() {
+            console.log("onTripStart");
+        },
+        onTripEnd : function() {
+            console.log("onTripEnd");
+        },
+        onTripStop : function() {
+            console.log("onTripStop");
+        },
+        onTripChange : function(index, tripBlock) {
+            console.log("onTripChange");
+        },
+        backToTopWhenEnded : true,
+        showCloseBox : true,
+        delay : 2000
+    });
+    
+    $(".start-home-tour").click(function() {
+        trip.start(); 
+    });
+    
+    window.trip = trip;
+});
+
+$(document).ready(function() {
+    var trip = new Trip([
+        { 
+            sel : $('.step1'), 
+            position : 'w', 
+            content : '<h4>We respect privacy</h4>Register and follow issues.<br>&nbsp\;', 
+            delay : 5000,
+            callback : function(i) {
+                console.log("step "+ i +" is finished");
+            }
+        }
+    ], {
+        tripTheme : "black",
+        onTripStart : function() {
+            console.log("onTripStart");
+        },
+        onTripEnd : function() {
+            console.log("onTripEnd");
+        },
+        onTripStop : function() {
+            console.log("onTripStop");
+        },
+        onTripChange : function(index, tripBlock) {
+            console.log("onTripChange");
+        },
+        backToTopWhenEnded : true,
+        showCloseBox : true,
+        delay : 2000
+    });
+    
+    $(".start-register-tour").click(function() {
+        trip.start(); 
+    });
+    
+    window.trip = trip;
+});
+
+$(document).ready(function() {
+    var trip = new Trip([
+        { 
+            sel : $('.step1'), 
+            position : 'w', 
+            content : '<h4>Current Users</h4>Previously registered users<br>can login and follow issues.<br>&nbsp\;', 
+            delay : 5000,
+            callback : function(i) {
+                console.log("step "+ i +" is finished");
+            }
+        }
+    ], {
+        tripTheme : "black",
+        onTripStart : function() {
+            console.log("onTripStart");
+        },
+        onTripEnd : function() {
+            console.log("onTripEnd");
+        },
+        onTripStop : function() {
+            console.log("onTripStop");
+        },
+        onTripChange : function(index, tripBlock) {
+            console.log("onTripChange");
+        },
+        backToTopWhenEnded : true,
+        showCloseBox : true,
+        delay : 2000
+    });
+    
+    $(".start-login-tour").click(function() {
+        trip.start(); 
+    });
+    
+    window.trip = trip;
+});
+
+$(document).ready(function() {
+    var trip = new Trip([
+        { 
+            sel : $('.step1'), 
+            position : 'w', 
+            content : '<h4>About HearUs</h4>Freedom of Speech +1.<br>&nbsp\;', 
+            delay : 5000,
+            callback : function(i) {
+                console.log("step "+ i +" is finished");
+            }
+        }
+    ], {
+        tripTheme : "black",
+        onTripStart : function() {
+            console.log("onTripStart");
+        },
+        onTripEnd : function() {
+            console.log("onTripEnd");
+        },
+        onTripStop : function() {
+            console.log("onTripStop");
+        },
+        onTripChange : function(index, tripBlock) {
+            console.log("onTripChange");
+        },
+        backToTopWhenEnded : true,
+        showCloseBox : true,
+        delay : 2000
+    });
+    
+    $(".start-about-tour").click(function() {
+        trip.start(); 
+    });
+    
+    window.trip = trip;
+});
+
+$(document).ready(function() {
+    var trip = new Trip([
+        { 
+            sel : $('.step1'), 
+            position : 'w', 
+            content : '<h4>Your Results</h4>If your local representative<br> is not a perfect match,<br>search by home address<br>or geo location.<br>&nbsp\;', 
+            delay : 5000,
+            callback : function(i) {
+                console.log("step "+ i +" is finished");
+            }
+        }
+    ], {
+        tripTheme : "black",
+        onTripStart : function() {
+            console.log("onTripStart");
+        },
+        onTripEnd : function() {
+            console.log("onTripEnd");
+        },
+        onTripStop : function() {
+            console.log("onTripStop");
+        },
+        onTripChange : function(index, tripBlock) {
+            console.log("onTripChange");
+        },
+        backToTopWhenEnded : true,
+        showCloseBox : true,
+        delay : 2000
+    });
+    
+    $(".start-districts-tour").click(function() {
+        trip.start(); 
+    });
+    
+    window.trip = trip;
+});
+
+$(document).ready(function() {
+    var trip = new Trip([
+        { 
+            sel : $('.step1'), 
+            position : 'e', 
+            content : '<h4>Zip Code</h4>We find your local representative<br>by your Zip Code\'s district number.<br>This is often all that is needed.<br>You can provide alternatives for<br>better accuracy including detect-<br>location and home address.', 
+            delay : 5000,
             callback : function(i) {
                 console.log("step "+ i +" is finished");
             }

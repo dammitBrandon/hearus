@@ -9,15 +9,15 @@
 </head>
 <body>
   <div style="margin-bottom:80px;" class="l-content">
+    <div class="pure-g-r">
 
     <%= yield %>
 
+    </div>
   </div> <!-- end l-content -->
 
   <div class="footer">
     <p class="l-box">
-      <a href="#" class="start-tour">Tour</a>
-      <%= link_to "About", about_path, html: {class: "start-tour"} %>
       <%= link_to "Home", root_path %>
       <% if !current_user %>
         <%= link_to "Login", new_session_path %>
@@ -26,6 +26,7 @@
         <%= link_to "Profile", users_path %>
         <%= link_to "Logout", logout_path %>
       <% end %>
+      <%= link_to "About", about_path, html: {class: "start-tour"} %>
     </p>
   </div>
 
