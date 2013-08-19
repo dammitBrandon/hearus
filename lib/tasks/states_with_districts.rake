@@ -86,6 +86,7 @@ namespace :seed do
               district.rep_facebook = rep.facebook_id
               district.rep_youtube = rep.youtube_url
               district.rep_wiki = rep.congresspedia_url
+              district.bioguide_id = rep.bioguide_id
             if district.save
               puts "#{district.state_abbreviation} district:#{district.number} saved!"
             else

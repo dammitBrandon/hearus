@@ -22,7 +22,7 @@ class Bill
 
   def self.keyword_string(query_string)
     base = "http://congress.api.sunlightfoundation.com/bills/search?query="
-    base += query_string + "&"
+    base += query_string + "&history.enacted=false&"
     base + self.api_string
   end
 
