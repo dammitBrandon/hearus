@@ -3,6 +3,7 @@ class BillsController < ApplicationController
   end
 
   def view
+    Bill.view_bill(params[:bill_id])
   end
 
   def create
