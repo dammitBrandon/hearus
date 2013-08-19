@@ -5,14 +5,19 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-# gem 'sqlite3'
 gem 'pg'
 gem 'sunlight'
 gem 'geocoder'
 gem 'httparty'
 gem 'ym4r'
 gem 'gravatar_image_tag'
-
+gem 'oauth'
+gem 'omniauth'
+gem 'omniauth-facebook', '1.4.0'
+gem 'omniauth-foursquare'
+gem 'omniauth-twitter'
+gem 'omniauth-linkedin'
+gem 'koala'
 
 # Gems used only for assets and not required
 # in production environments by default.

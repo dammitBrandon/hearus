@@ -1,0 +1,38 @@
+<div class="pure-g-r">
+  <div class="pure-u-1-3">
+    &nbsp;
+  </div>
+
+<div class="pure-u-1-3">
+  <% if @user %>
+    <% @user.get_zipcode(@zipcode) %>
+    <%= @user.rep_name %><br>
+    District ID: <%= @user.district_id %><br>
+    <%= @user.rep_email_form %><br>
+    <%= @user.rep_party %><br>
+    <a href="tel:<%= @user.rep_phone %>"><%= @user.rep_phone %></a><br>
+    Find <a target="_blank" href="https://twitter.com/intent/tweet?text=<%= @user.rep_twitter %>+Hi there!"><%= @user.rep_twitter %></a> on Twitter and <a target="_blank" href="https://twitter.com/intent/tweet?text=<%= @user.rep_twitter %>+Hi!+">say hi.</a><br>
+    <a target="_blank" href="https://www.facebook.com/<%= @user.rep_facebook %>"><%= @user.rep_facebook %></a><br>
+    <%= @user.rep_youtube %><br>
+    <%= @user.rep_wiki %><br>
+  <% else %>
+    <% @user = RegularUser.new %>
+    <% @user.get_zipcode(@zipcode) %>
+    <%= @user.rep_name %><br>
+  <% end %>
+  <a class="openmodalbox" href="javascript:void(0);">
+    <span class="icon-stack">
+      <i class="icon-circle-blank icon-stack-base"></i>
+      <i class="icon-question"></i>
+    </span>
+    <span class="modalboxContent">
+      <h3>Zipcode Search</h3>
+      If your zipcode matches a single representative, your address is not required. We respect privacy (link_to privacy_path).
+    </span>
+  </a>
+ </div>
+
+  <div class="pure-u-1-3">
+    &nbsp;
+  </div>
+</div>

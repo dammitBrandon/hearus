@@ -16,4 +16,12 @@ Hearus::Application.routes.draw do
 
   get '/about', to: 'landing#about', as: 'about'
   root :to => 'landing#show'
+
+  # oauth routes
+  match 'auth/:provider/callback' => 'sessions#create'
+  match 'auth/failure'            => redirect('/')
+
+  get '/logout'   => 'sessions#destroy', as: :logout
+
+  root :to => 'landing#index'
 end

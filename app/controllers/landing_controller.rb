@@ -6,6 +6,5 @@ class LandingController < ApplicationController
   end
 
   def about
-
   end
 end

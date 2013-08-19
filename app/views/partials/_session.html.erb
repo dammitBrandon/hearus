@@ -1,0 +1,26 @@
+<p>&nbsp;<br>
+<p>Log in with: 
+<a style="text-decoration:none;" href="/auth/twitter">
+<span class="icon-stack">
+  <i class="icon-check-empty icon-stack-base"></i>
+  <i class="icon-twitter"></i>
+</span>
+</a>
+<a style="text-decoration:none;" href="/auth/facebook">
+<span class="icon-stack">
+  <i class="icon-check-empty icon-stack-base"></i>
+  <i class="icon-facebook"></i>
+</span>
+</a><br>Or using an email address:
+<% if @error %>
+  <p><%= @error %></p>
+<% end %>
+
+ <p>&nbsp;<br>
+  <%= form_tag sessions_path, :method => 'post', :class => "pure-form" do %>
+    <label for="email" style="color:white;float:right;">Email</label>
+    <%= text_field_tag "email", nil, :size => 12, placeholder: "Email Here", autofocus: true %>
+    <label for="password", style="color:white;float:right;">Password</label>
+    <%= password_field_tag "password", nil, :size => 12, placeholder: "Password Here"%>
+    <%= submit_tag "Sign In", :class => "pure-button pure-button-primary" %>
+  <% end %>
