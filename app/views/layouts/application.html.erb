@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hearus</title>
+  <title>HearUs</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.1/pure-min.css">
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="l-content">
+  <div style="margin-bottom:80px;" class="l-content">
 
     <%= yield %>
 
@@ -16,9 +16,15 @@
 
   <div class="footer">
     <p class="l-box">
-      <%= link_to "Login", new_session_path %>
       <%= link_to "About", about_path %>
-      <%= link_to "Register", new_user_path %>
+      <%= link_to "Home", root_path %>
+      <% if !current_user %>
+        <%= link_to "Login", new_session_path %>
+        <%= link_to "Register", new_user_path %>
+      <% else %>
+        <%= link_to "Profile", users_path %>
+        <%= link_to "Logout", logout_path %>
+      <% end %>
     </p>
   </div>
 

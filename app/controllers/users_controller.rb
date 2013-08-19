@@ -1,15 +1,14 @@
 class UsersController < ApplicationController
-  def index
-    @user = User.all
-  end
-  
+  before_filter :matched_user, only: [:edit, :destroy]
+
   def new
-    @user = User.new
+    @user = RegularUser.new
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = RegularUser.new(params[:regular_user])
     if @user.save
+      session[:user_id] = @user.id
       redirect_to root_path
     else
       @errors = @user.errors.full_messages
@@ -18,10 +17,30 @@ class UsersController < ApplicationController
   end
 
   def show
-    if current_user?
-     @user = current_user
+    @user = RegularUser.find(current_user.id)
+  end
+
+  def index
+    @user = RegularUser.find(current_user.id)
+  end
+
+  def edit
+    @user = RegularUser.find(current_user.id)
+  end
+
+  def update
+    @user = RegularUser.find(current_user.id)
+    if @user.update_attributes(params[:regular_user])
+      redirect_to root_path
     else
-      redirect_to "new"
+      render action: 'edit'
     end
   end
+
+  private
+
+    def matched_user
+      redirect_to root_url unless current_user && params[:id] == current_user.id
+    end
+
 end

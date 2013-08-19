@@ -1,0 +1,39 @@
+# All settings defined here can be accessed anywhere simply by calling CONFIG['key']
+
+shared: &shared
+  fb_permissions: "email,publish_actions,read_stream"
+  linkedin_permissions: "r_basicprofile r_emailaddress"
+
+development:
+  <<: *shared
+  site_name:
+  root_url:
+  fb_app_id:
+  fb_secret:
+  fb_namespace:
+  fb_push_secret:
+  foursquare_id:
+  foursquare_secret:
+  foursquare_push_secret:
+  twitter_id:
+  twitter_secret:
+  linkedin_id:
+  linkedin_secret:
+  ssl_certs: { ca_file: /opt/local/etc/openssl/cert.pem }
+
+production:
+  <<: *shared
+  site_name:
+  root_url:
+  fb_app_id:
+  fb_secret:
+  fb_namespace:
+  fb_push_secret:
+  foursquare_id:
+  foursquare_secret:
+  foursquare_push_secret:
+  twitter_id:
+  twitter_secret:
+  linkedin_id:
+  linkedin_secret:
+  ssl_certs: { ca_path: /etc/ssl/certs }

@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130816204922) do
+ActiveRecord::Schema.define(:version => 20130818033518) do
+
+  create_table "accounts", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "uid"
+    t.string   "username"
+    t.string   "oauth_token"
+    t.string   "oauth_secret"
+    t.string   "provider"
+    t.datetime "oauth_expires"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "accounts", ["user_id"], :name => "index_accounts_on_user_id"
 
   create_table "districts", :force => true do |t|
     t.integer  "number"
@@ -41,8 +55,8 @@ ActiveRecord::Schema.define(:version => 20130816204922) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "username"
-    t.string   "email",              :null => false
-    t.string   "password_digest",    :null => false
+    t.string   "email"
+    t.string   "password_digest"
     t.integer  "district_id"
     t.integer  "district_number"
     t.string   "state_abbreviation"
