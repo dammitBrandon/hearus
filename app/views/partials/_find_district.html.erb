@@ -10,3 +10,8 @@
     <%= text_field_tag "zipcode", nil, :size => 12, :maxlength => 5, placeholder: "Zipcode" %>
     <%= submit_tag "Go", :class => "pure-button pure-button-primary" %>
   <% end %>
+
+<div id="latlng">
+  <p><button onclick="geoLocate()">Show my location</button>
+  &nbsp;
+</div>
