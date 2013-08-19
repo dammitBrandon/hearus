@@ -8,4 +8,7 @@ class District < ActiveRecord::Base
             :state_id, :state_abbreviation,
             :presence => true, :on => :update
 
+  def self.find_by_sunlight_district(district)
+    District.where("state_abbreviation = ? AND number = ?", district.state, district.number.to_i ).first
+  end
 end

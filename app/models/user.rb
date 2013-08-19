@@ -79,7 +79,6 @@ class User < ActiveRecord::Base
   #   set_representative
   # end
 
-
   def set_representative(district_id)
     self.district = District.find(district_id)
     self.state_abbreviation = self.district.state_abbreviation

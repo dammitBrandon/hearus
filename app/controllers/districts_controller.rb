@@ -15,9 +15,9 @@ class DistrictsController < ApplicationController
   end
 
   def set
-      @district = get_zipcode(params[:zipcode])  if params[:zipcode]
-      @district = get_coordinates("#{params[:address]}, #{params[:city]}, #{params[:state]}") if params[:address]
-      @district = set_district_by_coordinates(params[:latitude], params[:longitude]) if params[:latitude] && params[:longitude]
+      @district = Location.get_zipcode(params[:zipcode])  if params[:zipcode]
+      @district = Location.get_coordinates("#{params[:address]}, #{params[:city]}, #{params[:state]}") if params[:address] && params[:city] && params[:state]
+      @district = Location.set_district_by_coordinates(params[:latitude], params[:longitude]) if params[:latitude] && params[:longitude]
 
     if @district
       session[:district_id] = @district.id
