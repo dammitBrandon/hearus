@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def current_user
-    @current_user||= User.find_by_id(session[:user_id])
+    @current_user ||= User.find_by_id(session[:user_id])
   end
 
   def current_user?
@@ -26,32 +26,23 @@ class ApplicationController < ActionController::Base
   end
 
   def set_district_by_zipcode(zipcode)
-    district = nil
     legislators = Sunlight::Legislator.all_in_zipcode(zipcode)
     if legislators.length == 3
-      legislators.each do |leg|
-        if leg.title == "Rep"
-          district = District.where("state_abbreviation = ? AND number = ?", leg.state, leg.district.to_i )[0]
-        end
-      end
-    return district
-   else
-    false
-   end
+      rep = legislators.find { |leg| leg.title == 'Rep' }
+      District.where("state_abbreviation = ? AND number = ?", rep.state, rep.district.to_i ).first
+    else
+      false
+    end
   end
 
   def get_coordinates(address)
-    coordinates = Geocoder.coordinates(address)
-    latitude = coordinates[0]
-    longitude = coordinates[1]
-    set_district_by_coordinates(latitude,longitude)
+    get_district_by_coordinates(*(Geocoder.coordinates(address)))
   end
 
   protected
 
-  def set_district_by_coordinates(latitude,longitude)
-    district = Sunlight::District.get(:latitude => latitude,
-                                      :longitude => longitude)
-    return District.where("state_abbreviation = ? AND number = ?", district.state, district.number.to_i )[0]
+  def get_district_by_coordinates(latitude, longitude)
+    district = Sunlight::District.get(:latitude => latitude,:longitude => longitude)
+    District.find_by_sunlight_district(district)
   end
 end
