@@ -33,6 +33,9 @@ describe User do
     it { should have_many(:accounts) }
   end
 
+  #context 'testing votes' do
+    #it
+  #end
 #  it 'should return an existing user' do
 #    user = Factory.create(:user)
 #    expect(User.)
