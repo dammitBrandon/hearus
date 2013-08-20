@@ -10,8 +10,6 @@ class CreateUsers < ActiveRecord::Migration
       t.integer    :district_number
       t.string     :state_abbreviation
       t.string     :state_full_name
-      t.float      :latitude
-      t.float      :longitude
 
       #denormalization
       t.string     :rep_name
@@ -21,6 +19,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string     :rep_twitter
       t.string     :rep_facebook
       t.string     :rep_youtube
+      t.string     :rep_bioguide_id
       t.string     :rep_wiki
 
       t.timestamps
