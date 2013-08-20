@@ -15,7 +15,13 @@ describe User do
     it { should validate_presence_of(:rep_name) }
   end
 
-  it "should return an existing user" do
+  context 'testing associations' do
+      it { should belong_to(:district) }
+      it { should have_many(:votes) }
+      it { should have_many(:accounts) }
+  end
+
+  it 'should return an existing user' do
     user = Factory.create(:user)
     expect(User.)
   end
