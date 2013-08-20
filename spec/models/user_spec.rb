@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
   it { should be_instance_of(User) }
 
-  context 'testing attr_accessible' do
+  context 'testing validations' do
     it { should validate_presence_of(:first_name) }
     it { should validate_presence_of(:last_name) }
     it { should validate_presence_of(:email) }
@@ -15,14 +15,26 @@ describe User do
     it { should validate_presence_of(:rep_name) }
   end
 
-  context 'testing associations' do
-      it { should belong_to(:district) }
-      it { should have_many(:votes) }
-      it { should have_many(:accounts) }
+  context 'testing attr_accessible' do
+    it { should allow_mass_assignment_of(:email)  }
+    it { should allow_mass_assignment_of(:first_name) }
+    it { should allow_mass_assignment_of(:last_name) }
+    it { should allow_mass_assignment_of(:username) }
+    it { should allow_mass_assignment_of(:password) }
+    it { should allow_mass_assignment_of (:password_confirmation) }
+    it { should allow_mass_assignment_of(:district_id) }
+    it { should allow_mass_assignment_of(:district_number) }
+    it { should allow_mass_assignment_of(:rep_name) }
   end
 
-  it 'should return an existing user' do
-    user = Factory.create(:user)
-    expect(User.)
+  context 'testing associations' do
+    it { should belong_to(:district) }
+    it { should have_many(:votes) }
+    it { should have_many(:accounts) }
   end
+
+#  it 'should return an existing user' do
+#    user = Factory.create(:user)
+#    expect(User.)
+#  end
 end
