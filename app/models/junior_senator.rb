@@ -1,0 +1,2 @@
+class JuniorSenator < Politician
+end
