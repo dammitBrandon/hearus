@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130819193422) do
+ActiveRecord::Schema.define(:version => 20130820001007) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -26,6 +26,11 @@ ActiveRecord::Schema.define(:version => 20130819193422) do
   end
 
   add_index "accounts", ["user_id"], :name => "index_accounts_on_user_id"
+
+  create_table "district_shapes", :force => true do |t|
+    t.text    "shape"
+    t.integer "district_id"
+  end
 
   create_table "districts", :force => true do |t|
     t.integer  "number"
