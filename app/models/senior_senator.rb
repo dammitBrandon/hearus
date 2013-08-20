@@ -1,3 +1,0 @@
-class SeniorSenator < Politician
-
-end
