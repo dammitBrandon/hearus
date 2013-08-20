@@ -7,27 +7,6 @@
     <%= render partial: "partials/zipcode" %>
   </div>
 
-  <div id="map-canvas" style="width: 50%;height: 400px;"></div>
-
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-<script type="text/javascript">
-function initialize() {
-  var options = {
-    zoom: 1,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-  var map = new google.maps.Map(document.getElementById('map-canvas'), options);
-  <% DistrictShape.all.each do |shape| %>
-    new google.maps.KmlLayer({
-      url: "<%= district_shape_path(shape, format: :kml) %>",
-      map: map
-    });
-  <% end %>
-  google.maps.event.trigger(map, 'resize');
-};
-google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-
   <div class="pure-u-1-4">
     &nbsp;
   </div>

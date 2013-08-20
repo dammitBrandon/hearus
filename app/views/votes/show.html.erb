@@ -1,1 +1,9 @@
-Here there be Votes!
+
+<h1><%= @bill["short_title"] %></h1>h1
+<h2>Total Votes:<%= Vote.all_votes(@vote.bill_id) %>
+<ul>
+  <h3> Breakdown: </h3>
+  <li>YEA:<%= number_to_percentage(@yes/@</li>
+  <li>NAY:</li>
+  <li>No Opinion:</li>
+</ul>
