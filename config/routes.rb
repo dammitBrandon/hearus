@@ -8,6 +8,8 @@ Hearus::Application.routes.draw do
     end
   end
 
+
+
   resources :district_shapes, only: [:show]
 
   resources :votes

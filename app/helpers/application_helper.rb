@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def current_user?
-    false unless current_user
+    !current_user.nil?
   end
 
   def current_district

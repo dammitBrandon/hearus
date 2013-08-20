@@ -9,7 +9,7 @@ class VotesController < ApplicationController
       :user_id => params[:vote][:user_id],
       :bill_id => params[:vote][:bill_id])
     if @vote.save
-      @bill,@voter,@yes,@no,@no_opinion = bill,voter,yes,no,no_opinion
+      @all_votes,@bill,@voter,@yes,@no,@no_opinion = all_votes,bill,voter,yes,no,no_opinion
       redirect_to vote_path(@vote)
     else
       @errors = @vote.errors.full_messages
