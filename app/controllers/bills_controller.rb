@@ -4,7 +4,13 @@ class BillsController < ApplicationController
   end
 
   def show
-    @bill = Bill.view_bill(params[:bill_id])
+    @errors = params[:errors]
+    puts "*" * 100
+    p current_user?
+    p session[:user_id]
+    p current_user == true
+    @vote = Vote.new
+    @bill = Bill.view_bill(params[:id])
     #all keys are strings
     #chamber
     #congress

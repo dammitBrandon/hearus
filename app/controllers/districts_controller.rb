@@ -6,7 +6,9 @@ class DistrictsController < ApplicationController
   end
 
   def show
-    if current_district?
+    if params[:bioguide_id]
+      @district = District.find_by_bioguide_id(params[:bioguide_id])
+    elsif current_district?
       @district = current_district
     else
       redirect_to root_path
@@ -27,10 +29,6 @@ class DistrictsController < ApplicationController
       redirect_to find_districts_path
     end
   end
-
-  private
-
-
 
 end
 
