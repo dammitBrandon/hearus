@@ -49,6 +49,7 @@ class User < ActiveRecord::Base
      self.rep_facebook = self.district.rep_facebook
      self.rep_youtube = self.district.rep_youtube
      self.rep_wiki = self.district.rep_wiki
+     self.rep_bioguide_id = self.district.bioguide_id
      self.save
    end
 
