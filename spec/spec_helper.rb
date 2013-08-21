@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'spork'
-#require 'spork/ext/ruby-debug'
 
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
@@ -38,9 +37,9 @@ Spork.prefork do
 
     config.order = "random"
   end
-
 end
 
 Spork.each_run do
   FactoryGirl.reload
 end
+

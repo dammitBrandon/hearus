@@ -1,11 +1,9 @@
 class Bill
   include ActionView::Helpers::NumberHelper
-
   attr_reader :id
 
   def initialize(sunlight_id)
     @id = sunlight_id
-    # view_bill(@id)
   end
 
   def self.choice_type(name)

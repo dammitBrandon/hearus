@@ -27,5 +27,3 @@ class DistrictsController < ApplicationController
     end
   end
 end
-
-
