@@ -1,5 +1,4 @@
 class OAuthUser
-
   attr_reader :provider, :user
 
   def initialize creds, user = nil
@@ -73,5 +72,6 @@ class OAuthUser
         :oauth_secret  => @policy.oauth_secret
       )
     end
-
 end
+
+

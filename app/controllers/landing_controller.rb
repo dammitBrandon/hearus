@@ -1,7 +1,8 @@
 class LandingController < ApplicationController
-  def index
-    if current_user? && current_district?
-      redirect_to district_path
+
+  def show
+    if current_user && current_district
+      redirect_to district_path(current_district)
     end
     @user = current_user
   end

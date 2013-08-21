@@ -35,16 +35,31 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :development do
-  gem "better_errors"
-  gem "binding_of_caller"
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'faker'
+  gem 'pry'
+  gem 'better_errors'
+  gem 'guard-rspec'
+  gem 'spork', "> 0.9.0.rc"
+  gem 'guard-spork'
+  gem "factory_girl", "~> 4.0"
 end
+
+group :test do
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
+end
+
 
 gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use ActiveModel has_secure_password
- gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

@@ -5,20 +5,22 @@
   <div class="pure-u-1-2">
   <h2>HearUs</h2>
     <p>&nbsp;<br>
-    <a href="#" class="start-bill-tour">
-      <span class="icon-stack">
-        <i class="icon-circle-blank icon-stack-base"></i>
-        <i class="icon-question"></i>
-      </span>
-    </a>
+      <div class="search-bar">
         <%= form_tag("/bills/find", method: "get", class: "pure-form") do %>
           <%= label_tag(:search, "Search for:") %>
           <%= text_field_tag(:search) %>
           <%= submit_tag("Search", class: "pure-button pure-button-primary") %>
         <% end %>
+        <a href="#" class="start-bill-tour">
+          <span class="icon-stack">
+            <i class="icon-circle-blank icon-stack-base"></i>
+            <i class="icon-question"></i>
+          </span>
+        </a>
+      </div>
         <p><% @bills.each do |bill| %>
           <%= bill["short_title"] %>
-          <%= bill["bill_id"] %>
+          <%= link_to "View Bill", bill_path(bill["bill_id"])%>
 
         <% end %>
   </div>

@@ -1,40 +1,44 @@
 class UsersController < ApplicationController
   before_filter :matched_user, only: [:edit, :destroy]
   before_filter :find_user, :except => [:new, :create]
-
+  include SessionHelper
   def new
+    cookies[:redirect_to_after_login] = request.env['HTTP_REFERER']
+    @errors = []
     @user = RegularUser.new
   end
 
   def create
     @user = RegularUser.new(params[:regular_user])
     if @user.save
-      session[:user_id] = @user.id
-      redirect_to root_path
+      set_session(@user)
+      redirect_to cookies[:redirect_to_after_login] || root_path
     else
-      @errors = @user.errors.full_messages
+      @errors = @user.errors.full_messages || []
       render "users/new"
     end
   end
 
   def show
-    @user
-  end
-
-  def index
-    @user
+    current_user
   end
 
   def edit
-    @user
+    current_user
   end
 
   def update
     if @user.update_attributes(params[:regular_user])
       redirect_to root_path
     else
+      @errors = @user.errors.full_messages || []
       render action: 'edit'
     end
+  end
+
+  def destroy
+    current_user.destroy
+    redirect_to root_path
   end
 
   private

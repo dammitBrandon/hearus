@@ -8,7 +8,13 @@ Hearus::Application.routes.draw do
     end
   end
 
+
+
+  resources :district_shapes, only: [:show]
+
   resources :votes
+
+  resources :data
 
   resources :users
   resources :districts do
@@ -31,5 +37,5 @@ Hearus::Application.routes.draw do
 
   get '/logout'   => 'sessions#destroy', as: :logout
 
-  root :to => 'landing#index'
+  root :to => 'landing#show'
 end
