@@ -14,6 +14,8 @@ Hearus::Application.routes.draw do
 
   resources :votes
 
+  resources :data
+
   resources :users
   resources :districts do
     collection do
@@ -35,5 +37,5 @@ Hearus::Application.routes.draw do
 
   get '/logout'   => 'sessions#destroy', as: :logout
 
-  root :to => 'landing#index'
+  root :to => 'landing#show'
 end

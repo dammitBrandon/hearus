@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_filter :find_user, :except => [:new, :create]
 
   def new
+    cookies[:redirect_to_after_login] = request.env['HTTP_REFERER']
+    @errors = []
     @user = RegularUser.new
   end
 
@@ -10,23 +12,19 @@ class UsersController < ApplicationController
     @user = RegularUser.new(params[:regular_user])
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to cookies[:redirect_to_after_login] || root_path
     else
-      @errors = @user.errors.full_messages
+      @errors = @user.errors.full_messages || []
       render "users/new"
     end
   end
 
   def show
-    @user
-  end
-
-  def index
-    @user
+    current_user
   end
 
   def edit
-    @user
+    current_user
   end
 
   def update
@@ -35,6 +33,11 @@ class UsersController < ApplicationController
     else
       render action: 'edit'
     end
+  end
+
+  def destroy
+    current_user.destroy
+    redirect_to root_path
   end
 
   private

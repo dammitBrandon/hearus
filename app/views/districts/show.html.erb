@@ -10,10 +10,10 @@
           <i class="icon-question"></i>
         </span>
       </a>
-    <h4><%= @district.state_full_name %>'s <%= @district.number.ordinalize %> district</h4>
+    <h4><%= @district.state_full_name %>'s <%= @district_number %> district</h4>
     <p class="step1"><%= @district.rep_name %>
     <p>Phone: <a href="tel:<%= @district.rep_phone.gsub(/[\D]/, '') %>"><%= @district.rep_phone %></a>
-      <p>Twitter: <a style="text-decoration:none;" target="_blank" href="https://twitter.com/<%= @district.rep_twitter %>"><%= @district.rep_twitter %></a><br>&nbsp; or <a style="text-decoration:none;" target="_blank" href="https://twitter.com/intent/tweet?source=webclient&text=<%= @district.rep_twitter %>+Please+vote+yes+on+bill+id+%23HearUs">Tweet him now!</a>
+      <p>Twitter: <a style="text-decoration:none;" target="_blank" href="https://twitter.com/<%= @district.rep_twitter %>"><%= @district.rep_twitter %></a><br>&nbsp; or <a style="text-decoration:none;" target="_blank" href="https://twitter.com/intent/tweet?source=webclient&text=<%= @district.rep_twitter %>+Please+vote+yes+on+bill+id+%23HearUs">Tweet him/her/it now!</a>
     <p>Facebook: <a style="text-decoration:none;" target="_blank" href="https://www.facebook.com/<%= @district.rep_facebook %>"><%= @district.rep_facebook %></a>
     <p><a style="text-decoration:none;" target="_blank" href="<%= @district.rep_youtube %>">YouTube Channel</a>
     <p><a style="text-decoration:none;" target="_blank" href="<%= @district.rep_email_form %>">Email Contact Form</a>
