@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe Vote do
-  it { should be_instance_of(Vote)  }
-
   context 'testing validations' do
     it { should validate_presence_of(:choice) }
     it { should validate_presence_of(:sunlight_id) }
@@ -18,5 +16,26 @@ describe Vote do
 
   context 'testing associations' do
     it { should belong_to(:user) }
+  end
+
+  let (:vote) { FactoryGirl.create(:vote) }
+
+  context "when a vote is saved" do
+    it "should set tweet_timestamp" do
+      vote.should_receive(:tweet_timestamp)
+      vote.save
+    end
+  end
+
+  describe "#tweet_timestamp" do
+    it "should be set to current time" do
+      vote.tweet_timestamp.should be_a String
+    end
+
+    it "should be nil if not tweeted" do
+      vote.tweeted = 0
+      vote.save
+      vote.tweet_timestamp.should == nil
+    end
   end
 end

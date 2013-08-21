@@ -1,2 +1,0 @@
-class Representative < Politician
-end
