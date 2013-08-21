@@ -7,9 +7,21 @@ class SessionsController < ApplicationController
 
   def create
     if request.env["omniauth.auth"].present?
+      oauth = OAuthUser.new(request.env["omniauth.auth"], current_user)
       create_oauth_user(request.env["omniauth.auth"], current_user)
+      oauth.login_or_create
+      session[:user_id] = oauth.user.id
+      session[:district_id] = oauth.user.district_id
     else
-      create_regular_user(params[:user][:email])
+      user = RegularUser.find_by_email(params[:email])
+      if user && user.authenticate(params[:password])
+        session[:user_id] = user.id
+        session[:district_id] = user.district_id
+      else
+        @error = "Invalid Login"
+        render action: 'new'
+      end
+      redirect_to root_path
     end
   end
 
