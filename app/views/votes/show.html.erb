@@ -1,9 +1,8 @@
 
-<h1><%= @bill["short_title"] %></h1>h1
-<h2>Total Votes:<%= Vote.all_votes(@vote.bill_id) %>
+<h2>Total Votes:<%= @bill.votes.count %></h2>
 <ul>
   <h3> Breakdown: </h3>
-  <li>YEA:<%= number_to_percentage(@yes/@</li>
-  <li>NAY:</li>
-  <li>No Opinion:</li>
+  <li>YEA:<%= @bill.percent_yes %></li>
+  <li>NAY:<%= @bill.percent_no %></li>
+  <li>No Opinion:<%= @bill.percent_no_opinion %></li>
 </ul>

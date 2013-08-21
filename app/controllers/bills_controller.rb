@@ -1,30 +1,23 @@
 class BillsController < ApplicationController
+  include SunlightHelper
+
   def find
-    @bills = Bill.search_query(params[:search])
+    @bills = search_query(params[:search])
   end
 
   def show
-    @errors = params[:errors]
-    puts "*" * 100
-    p current_user?
-    p session[:user_id]
-    p current_user == true
-    @vote = Vote.new
-    @bill = Bill.view_bill(params[:id])
-    #all keys are strings
-    #chamber
-    #congress
-    #cosponsors
-    #house_passage_result
-    #senate_passage_result
-    #number
-    #short_title
-    #sponsor_id
-    #urls => #congress, #govtrack, #opencongress
+    @error = params.fetch(:error, [])
+    puts params
+    @bill = view_bill(params[:id])
+    if current_user
+    @vote = Vote.find_by_user_id_and_sunlight_id(current_user.id, @bill["bill_id"]) || Vote.new
+    end
+
+
+    choice = Struct.new(:intent, :colloquial)
+    @choices = [
+      choice.new("Yes", "Yea"),
+      choice.new("No", "Nea"),
+      choice.new("No Opinion", "No Opinion"),]
   end
-
-  def create
-  end
-
-
 end

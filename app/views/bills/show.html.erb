@@ -1,11 +1,8 @@
   <div class="pure-u-1-4">
     &nbsp;
   </div>
-  <% if @errors %>
-    <%= @errors.each do |error| %>
-      <h3><%= error %></h3>
-    <% end %>
-  <% end %>
+
+    <h3><%= @error %></h3>
   <div class="pure-u-1-2">
     <p>&nbsp;<br>
     <a href="#" class="start-bill-tour">
@@ -29,31 +26,44 @@
   <div class="pure-u-1-4">
     &nbsp;
     <ul>
-      <% if current_user? %>
-      <li>
+      <% if current_user %>
+
+        <% @choices.each do |choice| %>
+          <li>
+            <!-- if object already created, form_for goes to update -->
+            <%= form_for @vote do |f| %>
+              <%= f.label :choice, choice.intent + " Vote" %>
+              <%= f.hidden_field :choice, :value => choice.intent %>
+              <%= f.hidden_field :sunlight_id, :value => @bill["bill_id"] %>
+              <%= f.submit choice.colloquial.upcase, disabled: (@vote.choice == choice.intent) %>
+            <% end %>
+          </li>
+        <% end %>
+
+      <!-- <li>
         <%= form_for @vote do |f| %>
+            <%= f.label :choice, "YES VOTE" %>
             <%= f.hidden_field :choice,  :value => "Yes" %>
             <%= f.hidden_field :bill_id, :value => @bill["bill_id"]%>
-            <%= f.hidden_field :user_id, :value => current_user.id %>
             <%= f.submit "YEA" %>
        <% end %>
       </li>
        <li>
         <%= form_for @vote do |f| %>
+            <%= f.label :choice, "No Opinion VOTE" %>
             <%= f.hidden_field :choice,  :value => "No Opinion" %>
             <%= f.hidden_field :bill_id, :value => @bill["bill_id"]%>
-            <%= f.hidden_field :user_id, :value => current_user.id %>
             <%= f.submit "No Opinion" %>
         <% end %>
       </li>
       <li>
         <%= form_for @vote do |f| %>
+            <%= f.label :choice, "NO VOTE" %>
             <%= f.hidden_field :choice,  :value => "No" %>
             <%= f.hidden_field :bill_id, :value => @bill["bill_id"]%>
-            <%= f.hidden_field :user_id, :value => current_user.id %>
             <%= f.submit "NEA" %>
         <% end %>
-      </li>
+      </li> -->
       <% end %>
     </ul>
   </div>
