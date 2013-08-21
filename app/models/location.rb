@@ -10,7 +10,7 @@ class Location
   def self.set_district_by_zipcode(zipcode)
     legislators = Sunlight::Legislator.all_in_zipcode(zipcode)
     rep = legislators.find { |leg| leg.title == 'Rep' }
-    if legislators.length == 3
+    if legislators.length <= 3
       District.where("state_abbreviation = ? AND number = ?", rep.state, rep.district.to_i ).first
     else
       false

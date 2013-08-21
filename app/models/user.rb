@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
    has_secure_password
+
    has_many :accounts, :dependent => :destroy
    has_many :votes
 
@@ -52,6 +53,6 @@ class User < ActiveRecord::Base
      self.rep_bioguide_id = self.district.bioguide_id
      self.save
    end
-
 end
+
 
