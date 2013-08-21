@@ -20,4 +20,11 @@ class User < ActiveRecord::Base
    def has_foursquare?
      accounts.where(provider: 'foursquare').any?
    end
+
+   def set_legislators(district_id)
+    self.district_id = district.id
+    self.state_id = District.find_by_id(district.id).state_id
+    self.save
+   end
+
 end
