@@ -7,7 +7,8 @@ module DistrictHelper
   end
 
   def format_district_number
-    @district_number = "at large district" unless @district.number > 0
-    @district_number ||= @district.number.ordinalize
+    district_number = @legislators.first.district.number
+    @district_number = "at large district" unless district_number > 0
+    @district_number ||= district_number.ordinalize
   end
 end
