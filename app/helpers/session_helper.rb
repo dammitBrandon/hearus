@@ -1,7 +1,7 @@
 module SessionHelper
   def set_session(user_object)
     session[:user_id] = user_object.id
-    session[:district_id] = user_object.district.id || nil
+    session[:district_id] = user_object.district.id if user_object.district
   end
 
   def create_regular_user(user_email)

@@ -1,10 +1,12 @@
 class VotesController < ApplicationController
-  include VoteHelper
   include SunlightHelper
   before_filter :new_vote_authorized, only: [:create, :update]
 
   def create
-    @vote = new_vote(params)
+    @vote = Vote.new(
+      :choice => params[:vote][:choice],
+      :user_id => current_user.id,
+      :sunlight_id => params[:vote][:sunlight_id])
     if @vote.save
       redirect_to vote_path(@vote)
     else
@@ -15,7 +17,6 @@ class VotesController < ApplicationController
 
   def show
     @vote = Vote.find_by_id(params[:id])
-    #need to make json keys from sunlight callable methods in bill object
     @bill = Bill.new(@vote.sunlight_id)
   end
 

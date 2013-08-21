@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
+  include SessionHelper
+
   before_filter :matched_user, only: [:edit, :destroy]
   before_filter :find_user, :except => [:new, :create]
-  include SessionHelper
+
   def new
     cookies[:redirect_to_after_login] = request.env['HTTP_REFERER']
     @errors = []
