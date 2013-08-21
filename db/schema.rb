@@ -38,21 +38,15 @@ ActiveRecord::Schema.define(:version => 20130820205916) do
     t.string   "state_abbreviation"
     t.string   "state_full_name"
     t.string   "rep_name"
-    t.string   "rep_email_form"
-    t.string   "rep_party"
-    t.string   "rep_phone"
-    t.string   "rep_twitter"
-    t.string   "rep_facebook"
-    t.string   "rep_youtube"
-    t.string   "rep_wiki"
-    t.string   "bioguide_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
 
+  add_index "districts", ["number"], :name => "index_districts_on_number"
+  add_index "districts", ["state_abbreviation"], :name => "index_districts_on_state_abbreviation"
+
   create_table "politicians", :force => true do |t|
     t.string   "first_name"
-    t.string   "middle_name"
     t.string   "last_name"
     t.string   "party"
     t.string   "gender"
@@ -68,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20130820205916) do
     t.string   "birthday"
     t.string   "type"
     t.integer  "district_id"
+    t.integer  "state_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
@@ -79,6 +74,8 @@ ActiveRecord::Schema.define(:version => 20130820205916) do
     t.datetime "updated_at",   :null => false
   end
 
+  add_index "states", ["abbreviation"], :name => "index_states_on_abbreviation"
+
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -88,27 +85,24 @@ ActiveRecord::Schema.define(:version => 20130820205916) do
     t.integer  "district_id"
     t.integer  "district_number"
     t.string   "state_abbreviation"
-    t.string   "state_full_name"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "rep_name"
-    t.string   "rep_email_form"
-    t.string   "rep_party"
-    t.string   "rep_phone"
-    t.string   "rep_twitter"
-    t.string   "rep_facebook"
-    t.string   "rep_youtube"
-    t.string   "rep_wiki"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
 
+  add_index "users", ["district_number"], :name => "index_users_on_district_number"
+  add_index "users", ["state_abbreviation"], :name => "index_users_on_state_abbreviation"
+
   create_table "votes", :force => true do |t|
     t.string   "choice"
     t.integer  "user_id"
-    t.string   "bill_id"
+    t.string   "sunlight_id"
     t.integer  "tweeted"
     t.datetime "tweeted_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
+
+  add_index "votes", ["choice"], :name => "index_votes_on_choice"
+  add_index "votes", ["sunlight_id"], :name => "index_votes_on_sunlight_id"
 
 end
