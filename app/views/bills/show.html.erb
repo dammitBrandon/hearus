@@ -31,7 +31,6 @@
       <% if current_user %>
         <% @choices.each do |choice| %>
           <li>
-            <!-- if object already created, form_for goes to update -->
             <%= form_for @vote do |f| %>
               <%= f.label :choice, choice.intent + " Vote" %>
               <%= f.hidden_field :choice, :value => choice.intent %>
