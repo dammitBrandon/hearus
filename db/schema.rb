@@ -115,12 +115,14 @@ ActiveRecord::Schema.define(:version => 20130820153816) do
   create_table "votes", :force => true do |t|
     t.string   "choice"
     t.integer  "user_id"
-    t.string   "bill_id"
+    t.string   "sunlight_id"
     t.integer  "tweeted"
     t.datetime "tweeted_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
-  add_index "votes", ["bill_id"], :name => "index_votes_on_bill_id"
   add_index "votes", ["choice"], :name => "index_votes_on_choice"
+  add_index "votes", ["sunlight_id"], :name => "index_votes_on_sunlight_id"
 
 end
