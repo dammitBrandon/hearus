@@ -1,5 +1,4 @@
 class Politician < ActiveRecord::Base
-  belongs_to :district
 
   attr_accessible :first_name, :middle_name,
                   :last_name, :party, :state_id,

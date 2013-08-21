@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
    has_many :accounts, :dependent => :destroy
    has_many :votes
    belongs_to :district
+   belongs_to :state
 
    def has_facebook?
      accounts.where(provider: 'facebook').any?
