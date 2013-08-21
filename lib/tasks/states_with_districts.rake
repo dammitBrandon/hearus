@@ -67,31 +67,52 @@ namespace :seed do
       end
 
       all_states.each do |state|
-        state.each do |rep|
-          if rep.title == "Rep"
+        state.each do |leg|
+          if leg.title == "Rep"
             district = District.new
-              district.number = rep.district.to_i
-              district.state = State.find_by_abbreviation(rep.state)
+              district.number = leg.district.to_i
+              district.state = State.find_by_abbreviation(leg.state)
               district.state_full_name = district.state.full_name
-              district.state_abbreviation = rep.state
-              district.rep_name = "#{rep.title}. #{rep.firstname} #{rep.lastname}"
-              district.rep_phone = rep.phone
-              if district.rep_name == "Rep. Greg Walden"
-                district.rep_email_form = "https://walden.house.gov/e-mail-greg"
-              else
-                district.rep_email_form = rep.webform
-              end
-              district.rep_party = rep.party
-              district.rep_twitter = "@#{rep.twitter_id}"
-              district.rep_facebook = rep.facebook_id
-              district.rep_youtube = rep.youtube_url
-              district.rep_wiki = rep.congresspedia_url
-              district.bioguide_id = rep.bioguide_id
-            if district.save
-              puts "#{district.state_abbreviation} district:#{district.number} saved!"
-            else
-              puts "Save failed, here's why: #{district.errors.full_messages}"
-            end
+              district.state_abbreviation = leg.state
+              district.rep_name = "#{leg.title}. #{leg.firstname} #{leg.lastname}"
+              district.save
+            rep = Representative.new
+              rep.first_name = leg.firstname
+              rep.last_name = leg.lastname
+              rep.district_id = district.id
+              rep.state_id = district.state.id
+              rep.party = leg.party
+              rep.twitter_id = "@#{leg.twitter_id}"
+              rep.facebook_id = leg.facebook_id
+              rep.youtube_url = leg.youtube_url
+              rep.bioguide_id = leg.bioguide_id
+              rep.birthday = leg.birthdate
+              rep.webform = leg.webform
+              rep.website = leg.website
+              rep.phone = leg.phone
+              rep.gender = leg.gender
+              rep.congress_office = leg.congress_office
+              rep.congresspedia_url = leg.congresspedia_url
+              rep.webform = "https://walden.house.gov/e-mail-greg" if rep.last_name == "Walden"
+              puts "Rep. #{rep.first_name} #{rep.last_name} saved!" if rep.save
+          else
+            sen = Senator.new
+              sen.first_name = leg.firstname
+              sen.last_name = leg.lastname
+              sen.state_id = State.find_by_abbreviation(leg.state).id
+              sen.party = leg.party
+              sen.twitter_id = "@#{leg.twitter_id}"
+              sen.facebook_id = leg.facebook_id
+              sen.youtube_url = leg.youtube_url
+              sen.bioguide_id = leg.bioguide_id
+              sen.birthday = leg.birthdate
+              sen.webform = leg.webform
+              sen.website = leg.website
+              sen.phone = leg.phone
+              sen.gender = leg.gender
+              sen.congress_office = leg.congress_office
+              sen.congresspedia_url = leg.congresspedia_url
+              puts "Sen. #{sen.first_name} #{sen.last_name} saved!" if sen.save
           end
         end
       end
