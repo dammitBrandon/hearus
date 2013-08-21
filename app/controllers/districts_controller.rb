@@ -9,8 +9,6 @@ class DistrictsController < ApplicationController
     else
       redirect_to root_path
     end
-    @district_number = "at large district" unless @district.number > 0
-    @district_number ||= @district.number.ordinalize
   end
 
   def find

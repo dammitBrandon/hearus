@@ -9,7 +9,7 @@ class BillsController < ApplicationController
     @errors = params.fetch(:errors, [])
     @bill = view_bill(params[:id])
     if current_user
-    @vote = Vote.find_by_user_id_and_sunlight_id(current_user.id, @bill["bill_id"]) || Vote.new
+      @vote = Vote.find_by_user_id_and_sunlight_id(current_user.id, @bill["bill_id"]) || Vote.new
     end
 
     choice = Struct.new(:intent, :colloquial)
