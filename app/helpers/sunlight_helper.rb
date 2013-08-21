@@ -13,7 +13,8 @@ module SunlightHelper
     display_unique_bill
   end
 
-private
+  private
+
   def bill_url
     base = "http://congress.api.sunlightfoundation.com/bills?bill_id="
     base += @bill_id + "&"
@@ -27,10 +28,7 @@ private
   end
 
   def display_bills_for_keyword
-    results = @results["results"]
-    results.each do |bill|
-      puts bill#Brandon's Work
-    end
+    @results["results"]
   end
 
   def display_unique_bill
