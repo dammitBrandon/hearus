@@ -12,4 +12,10 @@ FactoryGirl.define do
     district = Sunlight::District.get(latitude: latitude, longitude: longitude)
     district_number = district.number
   end
+
+  factory :vote do
+    user
+    sequence(:bill_id) {|n| n}
+    tweeted 1
+  end
 end
