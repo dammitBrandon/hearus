@@ -4,7 +4,7 @@
   </div>
 
   <div class="pure-u-1-2">
-    <% @user.errors.full_messages.each do |error| %>
+    <% @errors.each do |error| %>
       <p><%= error %></p>
     <% end %>
 

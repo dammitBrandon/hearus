@@ -2,7 +2,9 @@
     &nbsp;
   </div>
 
-    <h3><%= @error %></h3>
+    <% @errors.each do |error| %>
+      <%= error %>
+    <% end %>
   <div class="pure-u-1-2">
     <p>&nbsp;<br>
     <a href="#" class="start-bill-tour">
@@ -27,7 +29,6 @@
     &nbsp;
     <ul>
       <% if current_user %>
-
         <% @choices.each do |choice| %>
           <li>
             <!-- if object already created, form_for goes to update -->
@@ -39,31 +40,7 @@
             <% end %>
           </li>
         <% end %>
-
-      <!-- <li>
-        <%= form_for @vote do |f| %>
-            <%= f.label :choice, "YES VOTE" %>
-            <%= f.hidden_field :choice,  :value => "Yes" %>
-            <%= f.hidden_field :bill_id, :value => @bill["bill_id"]%>
-            <%= f.submit "YEA" %>
-       <% end %>
-      </li>
-       <li>
-        <%= form_for @vote do |f| %>
-            <%= f.label :choice, "No Opinion VOTE" %>
-            <%= f.hidden_field :choice,  :value => "No Opinion" %>
-            <%= f.hidden_field :bill_id, :value => @bill["bill_id"]%>
-            <%= f.submit "No Opinion" %>
-        <% end %>
-      </li>
-      <li>
-        <%= form_for @vote do |f| %>
-            <%= f.label :choice, "NO VOTE" %>
-            <%= f.hidden_field :choice,  :value => "No" %>
-            <%= f.hidden_field :bill_id, :value => @bill["bill_id"]%>
-            <%= f.submit "NEA" %>
-        <% end %>
-      </li> -->
       <% end %>
     </ul>
   </div>
+

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :matched_user, only: [:edit, :destroy]
   before_filter :find_user, :except => [:new, :create]
-
+  include SessionHelper
   def new
     cookies[:redirect_to_after_login] = request.env['HTTP_REFERER']
     @errors = []
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = RegularUser.new(params[:regular_user])
     if @user.save
-      session[:user_id] = @user.id
+      set_session(@user)
       redirect_to cookies[:redirect_to_after_login] || root_path
     else
       @errors = @user.errors.full_messages || []
@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:regular_user])
       redirect_to root_path
     else
+      @errors = @user.errors.full_messages || []
       render action: 'edit'
     end
   end

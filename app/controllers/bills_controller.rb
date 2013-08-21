@@ -6,7 +6,7 @@ class BillsController < ApplicationController
   end
 
   def show
-    @error = params.fetch(:error, [])
+    @errors = params.fetch(:errors, [])
     puts params
     @bill = view_bill(params[:id])
     if current_user

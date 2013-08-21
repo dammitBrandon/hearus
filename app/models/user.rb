@@ -14,16 +14,9 @@ class User < ActiveRecord::Base
 
    # after_update :set_representative, :if => :district_id_changed?
 
-   # commented for use with new oauth method, appears in RegularUser model
-   # validates_presence_of :email,
-   #                      :password
-   # validates :email,  uniqueness: true,
-   #                   format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, message: "%{value} is not a valid email address." }
    # end comment section, though twitter method below should do something
-   #
-   #
    def send_tweet
-
+    # so user can send tweet directly from app
    end
 
    def has_facebook?

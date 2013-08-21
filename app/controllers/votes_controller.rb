@@ -8,8 +8,8 @@ class VotesController < ApplicationController
     if @vote.save
       redirect_to vote_path(@vote)
     else
-      @error = "You can't vote twice!"
-      redirect_to :controller => "bills", :action => "show", :id => params[:vote][:sunlight_id], :error => @error
+      @errors = ["You can't vote twice!"]
+      redirect_to :controller => "bills", :action => "show", :id => params[:vote][:sunlight_id], :errors => @errors
     end
   end
 

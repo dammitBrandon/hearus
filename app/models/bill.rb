@@ -8,7 +8,6 @@ class Bill
     # view_bill(@id)
   end
 
-  # Another way of doing the choice types
   def self.choice_type(name)
     define_method(name) { Vote.where("sunlight_id = ? AND choice = ?", @id, name.to_s.titleize) }
     define_method("percent_#{name}") { percent send(name) }
