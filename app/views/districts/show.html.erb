@@ -10,6 +10,7 @@
           <li><%= legislator_title(leg) %></li>
           <li>Party: <%= party_text(leg) %></li>
           <li>Gender: <%= gender_text(leg) %></li>
+        <% if leg %><!-- leg conditional actually needed -->
           <li>Phone: <%= leg.phone %></li>
           <!-- they may not actually have a website -->
           <% if leg.website.length > 1 %>
@@ -41,6 +42,7 @@
           <% end %>
           <li>Born: <%= birthday(leg) %></li>
           <!-- also have access to state_id and district_id -->
+        <% end %> <!-- end of leg conditional -->
         </ul>
       <% end %>
   </div>
