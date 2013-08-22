@@ -81,7 +81,6 @@ ActiveRecord::Schema.define(:version => 20130820205916) do
     t.string   "last_name"
     t.string   "username"
     t.string   "email"
-    t.string   "password_digest"
     t.integer  "district_id"
     t.integer  "district_number"
     t.integer  "state_id"
