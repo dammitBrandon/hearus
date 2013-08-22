@@ -44,12 +44,11 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'spork', "> 0.9.0.rc"
   gem 'guard-spork'
-  gem "factory_girl", "~> 4.0"
+  gem 'factory_girl_rails'
 end
 
 group :test do
   gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
 end

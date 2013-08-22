@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130820153816) do
+ActiveRecord::Schema.define(:version => 20130820205916) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -38,40 +38,31 @@ ActiveRecord::Schema.define(:version => 20130820153816) do
     t.string   "state_abbreviation"
     t.string   "state_full_name"
     t.string   "rep_name"
-    t.string   "rep_email_form"
-    t.string   "rep_party"
-    t.string   "rep_phone"
-    t.string   "rep_twitter"
-    t.string   "rep_facebook"
-    t.string   "rep_youtube"
-    t.string   "rep_wiki"
-    t.string   "bioguide_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
 
-  add_index "districts", ["bioguide_id"], :name => "index_districts_on_bioguide_id"
   add_index "districts", ["number"], :name => "index_districts_on_number"
   add_index "districts", ["state_abbreviation"], :name => "index_districts_on_state_abbreviation"
 
-  create_table "representatives", :force => true do |t|
+  create_table "politicians", :force => true do |t|
     t.string   "first_name"
-    t.string   "middle_name"
     t.string   "last_name"
     t.string   "party"
-    t.string   "state"
     t.string   "gender"
     t.string   "phone"
     t.string   "website"
     t.string   "webform"
     t.string   "congress_office"
     t.string   "bioguide_id"
-    t.string   "votesmart_id"
     t.string   "twitter_id"
     t.string   "congresspedia_url"
     t.string   "youtube_url"
     t.string   "facebook_id"
     t.string   "birthday"
+    t.string   "type"
+    t.integer  "district_id"
+    t.integer  "state_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
@@ -94,22 +85,11 @@ ActiveRecord::Schema.define(:version => 20130820153816) do
     t.integer  "district_id"
     t.integer  "district_number"
     t.string   "state_abbreviation"
-    t.string   "state_full_name"
-    t.string   "rep_name"
-    t.string   "rep_email_form"
-    t.string   "rep_party"
-    t.string   "rep_phone"
-    t.string   "rep_twitter"
-    t.string   "rep_facebook"
-    t.string   "rep_youtube"
-    t.string   "rep_bioguide_id"
-    t.string   "rep_wiki"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
 
   add_index "users", ["district_number"], :name => "index_users_on_district_number"
-  add_index "users", ["rep_bioguide_id"], :name => "index_users_on_rep_bioguide_id"
   add_index "users", ["state_abbreviation"], :name => "index_users_on_state_abbreviation"
 
   create_table "votes", :force => true do |t|

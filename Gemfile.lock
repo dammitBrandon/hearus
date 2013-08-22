@@ -243,7 +243,6 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   dalli
   database_cleaner
-  factory_girl (~> 4.0)
   factory_girl_rails
   faker
   geocoder

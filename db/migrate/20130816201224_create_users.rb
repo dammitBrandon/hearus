@@ -9,18 +9,6 @@ class CreateUsers < ActiveRecord::Migration
       t.belongs_to :district
       t.integer    :district_number
       t.string     :state_abbreviation
-      t.string     :state_full_name
-
-      #denormalization
-      t.string     :rep_name
-      t.string     :rep_email_form
-      t.string     :rep_party
-      t.string     :rep_phone
-      t.string     :rep_twitter
-      t.string     :rep_facebook
-      t.string     :rep_youtube
-      t.string     :rep_bioguide_id
-      t.string     :rep_wiki
 
       t.timestamps
     end
