@@ -12,8 +12,6 @@
     <% end %>
       <p>Synchronize accounts here:<br>
     <p>Email: <%= @user.email %>
-    <%= render partial: "partials/geotag" %>
-
     <% @account = Account.find_by_user_id(session[:user_id]) %>
       <% if @account %>
       <p>Synchronize account number <%= @account.id %>:<br>
@@ -25,9 +23,6 @@
     <%= render partial: "partials/social_media" %>
     <p>User: <%= @user.id %>
     <p>User Email: <%= @user.email %>
-      <% if @twitter_client %>
-        <% @twitter_client.update("#HearUs tweets.") %>
-      <% end %>
   </div>
 
   <div class="pure-u-1-4">
