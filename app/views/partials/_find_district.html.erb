@@ -1,26 +1,14 @@
+
  <p>&nbsp;<br>
   <%= form_tag set_districts_path, :method => 'post', :class => "pure-form pure-form-stacked" do %>
-    <label for="street" style="color:white;float:right;">Street</label>
+    <%= label_tag "address", "Address" %>
     <%= text_field_tag "address", nil, placeholder: "Street Address", autofocus: true%>
-    <label for="city" style="color:white;float:right;">City</label>
+    <%= label_tag "city", "City" %>
     <%= text_field_tag "city", nil, placeholder: "City",  required: true %>
-    <label for="state" style="color:white;float:right;">State</label>
+    <%= label_tag "state", "State" %>
     <%= text_field_tag "state", nil, :size => 2, :maxlength => 2, placeholder: "State", required: true %>
     <%= submit_tag "Go", :class => "pure-button pure-button-primary" %>
   <% end %>
 
-<div id="latlng">
-  <p><button onclick="geoLocate()">Find my location</button>
-  &nbsp;
-</div>
-   <a class="openmodalbox" href="javascript:void(0);">
-      <span class="icon-stack">
-        <i class="icon-circle-blank icon-stack-base"></i>
-        <i class="icon-question"></i>
-      </span>
-      <span class="modalboxContent">
-        <h3>Detect Location</h3>
-        With your permission, we can auto-detect location for you.<br>
-        Your location data will not be recorded by the site in any way.
-      </span>
-    </a>
+  <%= render partial: "partials/geotag" %>
+  <%= render partial: "partials/location_faq" %>
