@@ -10,24 +10,28 @@
         <i class="icon-question"></i>
       </span>
     </a>
-      <p>Synchronize accounts here:<br>
-<a style="text-decoration:none;" href="/auth/twitter">
-<span class="icon-stack">
-  <i class="icon-check-empty icon-stack-base"></i>
-  <i class="icon-twitter"></i>
-</span>
-</a>
-<a style="text-decoration:none;" href="/auth/facebook">
-<span class="icon-stack">
-  <i class="icon-check-empty icon-stack-base"></i>
-  <i class="icon-facebook"></i>
-</span>
-<a>
-    <p>Email: <%= @user.email %>
-    <div id="latlng">
-      <p><button onclick="geoLocate()">Detect My Location</button>
-      &nbsp;
-    </div>
+    <% @account = Account.find_by_user_id(session[:user_id]) %>
+      <% if @account %>
+      <p>Synchronize account number <%= @account.id %>:<br>
+      <p>Account Provider: <%= @account.provider %>
+      <p>Account UID: <%= @account.uid %>
+      <p>Account Username: <%= @account.username %>
+      <% end %>
+    <p>
+    <a style="text-decoration:none;" href="/auth/twitter">
+    <span class="icon-stack">
+      <i class="icon-check-empty icon-stack-base"></i>
+      <i class="icon-twitter"></i>
+    </span>
+    </a>
+    <a style="text-decoration:none;" href="/auth/facebook">
+    <span class="icon-stack">
+      <i class="icon-check-empty icon-stack-base"></i>
+      <i class="icon-facebook"></i>
+    </span>
+    <a>
+    <p>User: <%= @user.id %>
+    <p>User Email: <%= @user.email %>
   </div>
 
   <div class="pure-u-1-4">
