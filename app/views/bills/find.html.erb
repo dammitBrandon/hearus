@@ -3,28 +3,29 @@
   </div>
 
   <div class="pure-u-1-2">
-  <h2>HearUs</h2>
+    <h2>HearUs</h2>
     <p>&nbsp;<br>
-      <div class="search-bar">
-        <%= form_tag("/bills/find", method: "get", class: "pure-form") do %>
-          <%= label_tag(:search, "Search for:") %>
-          <%= text_field_tag(:search) %>
-          <%= submit_tag("Search", class: "pure-button pure-button-primary") %>
-        <% end %>
-        <a href="#" class="start-bill-tour">
-          <span class="icon-stack">
-            <i class="icon-circle-blank icon-stack-base"></i>
-            <i class="icon-question"></i>
-          </span>
-        </a>
-      </div>
-        <p><% @bills.each do |bill| %>
-          <%= bill["short_title"] %>
-          <%= link_to "View Bill", bill_path(bill["bill_id"])%>
-
-        <% end %>
+    <%= render partial: "partials/issue_search" %>
+    <ul>
+    <% @bills[0..5].each do |bill| %>
+      <li><%= link_to bill["short_title"], bill_path(bill["bill_id"])%></li>
+      <li><%= bill["chamber"].titleize + " Bill: " + bill["bill_id"]%></li>
+      <li><%= "Purpose: " + bill["official_title"]%></li>
+      <li><%= link_to "OpenCongress", bill["urls"]["opencongress"]%></li>
+      <li><%= bill["summary_short"] || "No summary available" %></li>
+      <br/>
+      <!-- all available fields, note that on some of these fields may be blank depending on the bill -->
+    <% end %>
+    <ul>
   </div>
 
   <div class="pure-u-1-4">
     &nbsp;
   </div>
+
+
+
+
+
+
+

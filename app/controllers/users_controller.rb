@@ -21,8 +21,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def index
-    current_user
+  def show
+    redirect_to root_path
   end
 
   def edit

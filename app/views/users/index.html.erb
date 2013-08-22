@@ -4,12 +4,16 @@
 
   <div class="pure-u-1-2">
     <p>&nbsp;<br>
-    <a href="#" class="start-profile-tour">
+    <%= link_to "#", class: "start-profile-tour" do %>
       <span class="icon-stack">
         <i class="icon-circle-blank icon-stack-base"></i>
         <i class="icon-question"></i>
       </span>
-    </a>
+    <% end %>
+      <p>Synchronize accounts here:<br>
+    <p>Email: <%= @user.email %>
+    <%= render partial: "partials/geotag" %>
+
     <% @account = Account.find_by_user_id(session[:user_id]) %>
       <% if @account %>
       <p>Synchronize account number <%= @account.id %>:<br>
@@ -18,18 +22,7 @@
       <p>Account Username: <%= @account.username %>
       <% end %>
     <p>
-    <a style="text-decoration:none;" href="/auth/twitter">
-    <span class="icon-stack">
-      <i class="icon-check-empty icon-stack-base"></i>
-      <i class="icon-twitter"></i>
-    </span>
-    </a>
-    <a style="text-decoration:none;" href="/auth/facebook">
-    <span class="icon-stack">
-      <i class="icon-check-empty icon-stack-base"></i>
-      <i class="icon-facebook"></i>
-    </span>
-    <a>
+    <%= render partial: "partials/social_media" %>
     <p>User: <%= @user.id %>
     <p>User Email: <%= @user.email %>
     <% @twitter_client.update("#HearUs will find your local representative online, automagically let you Tweet, Faceboook, call them etc. launches tomorrow.") %>

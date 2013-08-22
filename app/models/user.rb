@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
    attr_accessible :email,:first_name,:last_name,
                    :password,:username,:password_confirmation
 
-   has_many :accounts, :dependent => :destroy
-   has_many :votes
+   has_many   :accounts, :dependent => :destroy
+   has_many   :votes
    belongs_to :district
    belongs_to :state
 
@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
    end
 
    def set_legislators(district_id)
-    self.district_id = district.id
+    self.district_id = district_id
     self.state_id = District.find_by_id(district.id).state_id
     self.save
    end

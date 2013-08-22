@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
 
   def new
     cookies[:redirect_to_after_login] = request.env['HTTP_REFERER']
+    @errors = []
   end
 
   def create
