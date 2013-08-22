@@ -32,6 +32,23 @@
     <a>
     <p>User: <%= @user.id %>
     <p>User Email: <%= @user.email %>
+      <% @twitters = Account.where(provider: "twitter") %>
+      <p>Tweet HearUs: <% @twitters.each do |account| %>
+          <% if account.user_id == session[:user_id] %>
+            @<%= account.username %><br>
+            <%= account.oauth_token %><br>
+            <%= account.oauth_secret %><br>
+            <% twit = Twitter::Client.new(:oauth_token => account.oauth_token, :oauth_token_secret => account.oauth_secret) %>
+            <%= twit.update("Tweeting from #HearUs (find your local representative online, automagically Tweet, Faceboook, call them etc. launches tomorrow)") %>
+          <% end %>
+        <% end %>
+        <section id="tweets">
+          <ul>
+            <% @tweets.each do |tweet| %>
+              <li><%= link_to tweet.text, "https://www.twitter.com/#{tweet.user.screen_name}" %></li>
+            <% end %>
+          </ul>
+        </section>
   </div>
 
   <div class="pure-u-1-4">

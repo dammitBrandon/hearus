@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
+  def index
     current_user
   end
 
