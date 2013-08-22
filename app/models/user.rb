@@ -1,14 +1,12 @@
 class User < ActiveRecord::Base
 
    attr_accessible :email,:first_name,:last_name,
-                   :password,:username,:password_confirmation
+                   :username
 
    has_many   :accounts, :dependent => :destroy
    has_many   :votes
    belongs_to :district
    belongs_to :state
-
-   validates_presence_of :email, :password
 
    def has_facebook?
      accounts.where(provider: 'facebook').any?

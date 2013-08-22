@@ -1,4 +1,5 @@
 class RegularUser < User
+  attr_accessible :password, :password_confirmation
   has_secure_password
 
   validates :email, :password, presence: true
