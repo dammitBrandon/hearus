@@ -1,31 +1,23 @@
-   <p>&nbsp;<br>
-     <a href="#" class="start-login-tour">
-        <span class="icon-stack">
-          <i class="icon-circle-blank icon-stack-base"></i>
-          <i class="icon-question"></i>
-        </span>
-     </a>
-<p>Login with: 
-<a style="text-decoration:none;" href="/auth/twitter">
-<span class="icon-stack">
-  <i class="icon-check-empty icon-stack-base"></i>
-  <i class="icon-twitter"></i>
-</span>
-</a>
-<a style="text-decoration:none;" href="/auth/facebook">
-<span class="icon-stack">
-  <i class="icon-check-empty icon-stack-base"></i>
-  <i class="icon-facebook"></i>
-</span>
-</a>
-<br>Or login with your email:
-<% if @error %>
-  <p><%= @error %></p>
+<p>&nbsp;<br>
+<%= link_to "#", class: "start-login-tour" do %>
+  <span class="icon-stack">
+    <i class="icon-circle-blank icon-stack-base"></i>
+    <i class="icon-question"></i>
+  </span>
 <% end %>
+
+<p>Login with:
+<%= render partial: "partials/social_media" %>
+
+<br>Or login with your email:
+  <%= render partial: "partials/errors" %>
+
   <%= form_tag sessions_path, :method => 'post', :class => "pure-form pure-form-stacked" do %>
-    <label for="email" style="color:white;float:right;">Email</label>
+    <%= label_tag "email", "Email" %>
     <%= text_field_tag "email", nil, placeholder: "Email", class: "step1", autofocus: true %>
-    <label for="password", style="color:white;float:right;">Password</label>
+    <%= label_tag "password", "Password" %>
     <%= password_field_tag "password", nil, placeholder: "Password"%>
     <%= submit_tag "Sign In", :class => "pure-button pure-button-primary" %>
   <% end %>
+</p>
+

@@ -4,21 +4,25 @@
 
   <div class="pure-u-1-2">
     <p>&nbsp;<br>
-      <a href="#" class="start-districts-tour">
-        <span class="icon-stack">
-          <i class="icon-circle-blank icon-stack-base"></i>
-          <i class="icon-question"></i>
-        </span>
-        <!-- @legislators.each do |legislator| -->
-      </a><!--
-    <h4><%= @legislators.state_full_name %>'s <%= format_district_number %> district</h4>
-    <p class="step1"><%= @legislators.rep_name %>
-    <p>Phone: <a href="tel:<%= @legislators.rep_phone.gsub(/[\D]/, '') %>"><%= @legislators.rep_phone %></a>
-      <p>Twitter: <a style="text-decoration:none;" target="_blank" href="https://twitter.com/<%= @legislators.rep_twitter %>"><%= @legislators.rep_twitter %></a><br>&nbsp; or <a style="text-decoration:none;" target="_blank" href="https://twitter.com/intent/tweet?source=webclient&text=<%= @legislators.rep_twitter %>+Please+vote+yes+on+bill+id+%23HearUs">Tweet him/her/it now!</a>
-    <p>Facebook: <a style="text-decoration:none;" target="_blank" href="https://www.facebook.com/<%= @legislators.rep_facebook %>"><%= @legislators.rep_facebook %></a>
-    <p><a style="text-decoration:none;" target="_blank" href="<%= @legislators.rep_youtube %>">YouTube Channel</a>
-    <p><a style="text-decoration:none;" target="_blank" href="<%= @legislators.rep_email_form %>">Email Contact Form</a>
-      <p>Bills for <a style="text-decoration:none;" target="_blank" href="/bills/find?search=<%= @legislators.state_full_name %>"><%= @legislators.state_full_name %></a> -->
+      <%= render partial: "partials/issue_search" %>
+      <% @legislators.each do |leg| %>
+        <ul>
+          <li><%= legislator_title(leg) %></li>
+          <li>Party: <%= party_text(leg) %></li>
+          <li>Gender: <%= gender_text(leg) %></li>
+          <li>Phone: <%= leg.phone %></li>
+          <li><%= link_to "Website", leg.website %></li>
+          <li><%= link_to "Email Form",leg.webform %></li>
+          <li>Address: <%= leg.congress_office %></li>
+          <li><%= link_to "Twitter", "https://twitter.com/" + leg.twitter_id %></li>
+          <!-- <li><leg.bioguide_id></li> -->
+          <li><%= link_to "Wiki",leg.congresspedia_url %></li>
+          <li><%= link_to "Youtube", leg.youtube_url %></li>
+          <li><%= link_to "Facebook", "https://www.facebook/" + leg.facebook_id %></li>
+          <li>Born: <%= birthday(leg) %></li>
+          <!-- also have access to state_id and district_id -->
+        </ul>
+      <% end %>
   </div>
 
   <div class="pure-u-1-4">

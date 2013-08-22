@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string     :password_digest
       t.belongs_to :district
       t.integer    :district_number
+      t.integer    :state_id
       t.string     :state_abbreviation
 
       t.timestamps
