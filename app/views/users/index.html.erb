@@ -25,8 +25,9 @@
     <%= render partial: "partials/social_media" %>
     <p>User: <%= @user.id %>
     <p>User Email: <%= @user.email %>
-    <!-- needs to be removed, breaks page when user registers without twitter -->
-    <% @twitter_client.update("#HearUs will find your local representative online, automagically let you Tweet, Faceboook, call them etc. launches tomorrow.") %>
+      <% if @twitter_client %>
+        <% @twitter_client.update("#HearUs tweets.") %>
+      <% end %>
   </div>
 
   <div class="pure-u-1-4">
