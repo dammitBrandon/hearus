@@ -15,7 +15,9 @@ FactoryGirl.define do
 
   factory :vote do
     user
-    sequence(:bill_id) {|n| n}
+    sequence(:sunlight_id) {|n| n}
     tweeted 1
+    choice "Yes"
   end
+
 end

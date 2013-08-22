@@ -4,7 +4,7 @@ class Vote < ActiveRecord::Base
   belongs_to :user
 
   validates_uniqueness_of :sunlight_id, :scope => :user_id
-
+  validates_presence_of :choice, :user_id, :sunlight_id
   before_save :tweet_timestamp
 
   def tweet_timestamp

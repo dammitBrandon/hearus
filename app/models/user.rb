@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
    belongs_to :district
    belongs_to :state
 
+   validates_presence_of :email, :password
+
    def has_facebook?
      accounts.where(provider: 'facebook').any?
    end
