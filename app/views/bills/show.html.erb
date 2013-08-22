@@ -1,27 +1,42 @@
   <div class="pure-u-1-4">
     &nbsp;
   </div>
-
-    <% @errors.each do |error| %>
-      <%= error %>
-    <% end %>
   <div class="pure-u-1-2">
     <p>&nbsp;<br>
-    <a href="#" class="start-bill-tour">
-      <span class="icon-stack">
-        <i class="icon-circle-blank icon-stack-base"></i>
-        <i class="icon-question"></i>
-      </span>
-    </a>
-        <h4> <%= @bill["short_title"] %> </h4>
-        <h5> <%= @bill["introduced_on"] %> </h5>
-        <h5> <%= @bill["chamber"].capitalize %></h5>
-        <h5> <%= link_to "Bill Sponsor",{:controller => "districts", :action => "show", :bioguide_id => @bill["sponsor_id"]} %> </h5>
+    <%= render partial: "partials/district_return" %>
+    <%= render partial: "partials/errors" %>
+      <%= render partial: "partials/question" %>
+        <h4> Title: <%= @bill["short_title"] %> </h4>
+        <h5> Introduced: <%= @bill["introduced_on"] %> </h5>
+        <h5> Sponsored By: <%= link_to find_by_sponsor_id(@bill["sponsor_id"]),{:controller => "districts", :action => "show", :bioguide_id => @bill["sponsor_id"]} %> </h5>
+        <h5>Keywords:</h5>
+          <ul>
+          <% @bill["keywords"].each do |keyword| %>
+            <li><%= link_to keyword, {controller: "bills", action: "find", search: keyword } %></li>
+          <% end %>
+          </ul>
+        <h5>Sources:</h5>
         <ul>
-          <li><%= link_to "Full Bill View", @bill["last_version"]["urls"]["pdf"] %></li>
-          <li><%= link_to "OpenCongress", @bill["urls"]["opencongress"] %></li>
-          <li><%= link_to "Govtrack", @bill["urls"]["govtrack"] %></li>
-          <li><%= link_to "Congress.Gov", @bill["urls"]["congress"] %></li>
+          <li><%= link_to "PDF View", @bill["last_version"]["urls"]["pdf"] %></li>
+          <% @bill["urls"].each do |source| %>
+            <li><%= link_to source[0].titleize, source[1] %></li>
+          <% end %>
+        </ul>
+        <h5>Legislative History:</h5>
+          <ul>
+          <% @bill["history"].each do |action| %>
+            <li><%= action[0] %>: <%= action[1] %></li>
+          <% end %>
+          </ul>
+        <ul>
+          <% @bill["related_bill_ids"].each do |bill| %>
+            <li><%= link_to bill%></li>
+          <% end %>
+        </ul>
+        <ul>
+          <li><%= @bill['popular_title'] %></li>
+          <li><%= @bill["summary_short"]%></li>
+          <li><%= @bill["chamber"].titleize%></li>
         </ul>
   </div>
 

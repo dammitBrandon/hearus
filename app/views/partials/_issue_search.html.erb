@@ -1,0 +1,10 @@
+<div class="search-bar">
+  <%= form_tag("/bills/find", method: "get", class: "pure-form") do %>
+    <%= label_tag(:search, "Search for:") %>
+    <%= text_field_tag(:search) %>
+    <%= submit_tag("Search", class: "pure-button pure-button-primary") %>
+  <% end %>
+  <a href="#" class="start-bill-tour">
+    <%= render partial: "partials/question" %>
+  </a>
+</div>

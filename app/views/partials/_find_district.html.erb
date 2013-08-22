@@ -1,11 +1,11 @@
  <p>&nbsp;<br>
   <%= form_tag set_districts_path, :method => 'post', :class => "pure-form pure-form-stacked" do %>
     <label for="street" style="color:white;float:right;">Street</label>
-    <%= text_field_tag "address", nil, placeholder: "Street Address", autofocus: true %>
+    <%= text_field_tag "address", nil, placeholder: "Street Address", autofocus: true%>
     <label for="city" style="color:white;float:right;">City</label>
-    <%= text_field_tag "city", nil, placeholder: "City" %>
+    <%= text_field_tag "city", nil, placeholder: "City",  required: true %>
     <label for="state" style="color:white;float:right;">State</label>
-    <%= text_field_tag "state", nil, :size => 2, :maxlength => 2, placeholder: "State" %>
+    <%= text_field_tag "state", nil, :size => 2, :maxlength => 2, placeholder: "State", required: true %>
     <%= submit_tag "Go", :class => "pure-button pure-button-primary" %>
   <% end %>
 

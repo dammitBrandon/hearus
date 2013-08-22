@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20130820205916) do
     t.string   "password_digest"
     t.integer  "district_id"
     t.integer  "district_number"
+    t.integer  "state_id"
     t.string   "state_abbreviation"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false

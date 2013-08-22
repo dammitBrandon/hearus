@@ -23,7 +23,7 @@ module SunlightHelper
 
   def summary_bill_select
     base = "http://congress.api.sunlightfoundation.com/bills?bill_id="
-    base += @bill_id + "&" + "&fields=bill_id,bill_type,chamber,popular_title,short_title,official_title,urls,history,last_action,sponsor_id,commitee_ids,related_bill_ids,nicknames,keywords,summary,summary_short&"
+    base += @bill_id + "&" + "&fields=bill_id,bill_type,chamber,popular_title,short_title,official_title,urls,history,last_action,sponsor_id,commitee_ids,related_bill_ids,nicknames,keywords,summary,summary_short,last_version&"
     base + api_string
   end
 
@@ -44,6 +44,7 @@ module SunlightHelper
   end
 
   def display_bill_for_select
+    puts @response["results"].first
     @response["results"].first
   end
 
