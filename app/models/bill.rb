@@ -16,7 +16,9 @@ class Bill
   choice_type :no_opinion
 
   def percent(choice)
-    number_to_percentage(choice.count.to_f/self.votes.count * 100, precision: 0)
+    percent = number_to_percentage(choice.count.to_f/self.votes.count * 100, precision: 0)
+    percent = number_to_percentage(0.0, precision: 0) if percent == "NaN%"
+    percent
   end
 
   def votes

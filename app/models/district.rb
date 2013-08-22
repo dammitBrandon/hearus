@@ -5,7 +5,7 @@ class District < ActiveRecord::Base
 
   validates :state_full_name, :rep_name,
             :state_id, :state_abbreviation,
-            :presence => true, :on => :update
+            :presence => true
 
   def self.find_by_sunlight_district(district)
     District.where("state_abbreviation = ? AND number = ?", district.state, district.number.to_i ).first

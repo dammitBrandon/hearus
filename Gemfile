@@ -43,7 +43,7 @@ group :development, :test do
   gem 'pry'
   gem 'better_errors'
   gem 'guard-rspec'
-  gem 'spork', "> 0.9.0.rc"
+  gem 'spork', "~> 0.9.0.rc"
   gem 'guard-spork'
   gem 'factory_girl_rails'
 end

@@ -7,4 +7,7 @@ class Politician < ActiveRecord::Base
                   :congress_office, :bioguide_id,
                   :twitter_id, :congresspedia_url, :youtube_url,
                   :facebook_id, :birthday
+
+  validates_presence_of :first_name, :last_name, :party,
+                        :bioguide_id, :gender, :phone, :birthday
 end

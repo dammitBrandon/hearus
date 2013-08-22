@@ -5,7 +5,7 @@ describe Vote do
     it { should validate_presence_of(:choice) }
     it { should validate_presence_of(:sunlight_id) }
     it { should validate_presence_of(:user_id) }
-    it { should validate_uniqueness_of(:user_id).scoped_to(:sunlight_id) }
+    it { should validate_uniqueness_of(:sunlight_id).scoped_to(:user_id) }
   end
 
   context 'testing attr_accessible' do
