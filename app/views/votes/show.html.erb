@@ -1,16 +1,24 @@
-  <div class="pure-u-1-4">
-    &nbsp;
+  <div class="pure-u-1-4"> &nbsp;
   </div>
 
   <div class="pure-u-1-2">
     <p>&nbsp;<br>
-    <h2>Total Votes:<%= @bill.votes.count %></h2>
+      <h4>Bill: <%= link_to view_bill(@bill.id)["short_title"], bill_path(@bill.id) %></h4>
     <ul>
       <h3> Breakdown: </h3>
       <li>YEA:<%= @bill.percent_yes %></li>
       <li>NAY:<%= @bill.percent_no %></li>
       <li>No Opinion:<%= @bill.percent_no_opinion %></li>
     </ul>
+      <%= flash[:message] %>
+      <% if @twitter_client %>
+        <%= form_tag create_tweet_path, class: "pure-form-stacked" do %>
+        <%= label_tag "tweet", "Tweet" %>
+        <%= text_area_tag "tweet", "I voted " + @vote.choice + " on a bill with #HearUs http://localhost:3000/votes/" + @vote.id.to_s, maxlength: 140, required: true, rows: 4 %>
+        <%= hidden_field_tag "vote_id", @vote.id %>
+        <%= submit_tag "Tweet", class: "pure-button pure-button-primary", disabled: (@vote.tweeted == 1) %>
+        <% end %>
+      <% end %>
   </div>
 
   <div class="pure-u-1-4">
