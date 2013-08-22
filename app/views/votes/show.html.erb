@@ -1,8 +1,18 @@
+  <div class="pure-u-1-4">
+    &nbsp;
+  </div>
 
-<h2>Total Votes:<%= @bill.votes.count %></h2>
-<ul>
-  <h3> Breakdown: </h3>
-  <li>YEA:<%= @bill.percent_yes %></li>
-  <li>NAY:<%= @bill.percent_no %></li>
-  <li>No Opinion:<%= @bill.percent_no_opinion %></li>
-</ul>
+  <div class="pure-u-1-2">
+    <p>&nbsp;<br>
+    <h2>Total Votes:<%= @bill.votes.count %></h2>
+    <ul>
+      <h3> Breakdown: </h3>
+      <li>YEA:<%= @bill.percent_yes %></li>
+      <li>NAY:<%= @bill.percent_no %></li>
+      <li>No Opinion:<%= @bill.percent_no_opinion %></li>
+    </ul>
+  </div>
+
+  <div class="pure-u-1-4">
+    &nbsp;
+  </div>

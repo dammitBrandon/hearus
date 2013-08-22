@@ -10,23 +10,14 @@
         <i class="icon-question"></i>
       </span>
     <% end %>
-      <p>Synchronize accounts here:<br>
-    <p>Email: <%= @user.email %>
-    <%= render partial: "partials/geotag" %>
-
-    <% @account = Account.find_by_user_id(session[:user_id]) %>
+      <p>Synchronize accounts<br>
+      <p><%= render partial: "partials/social_media" %>
+      <p>User ID: <%= @user.id %>
+      <p>Email: <%= @user.email %>
+      <% @account = Account.find_by_user_id(session[:user_id]) %>
       <% if @account %>
-      <p>Synchronize account number <%= @account.id %>:<br>
-      <p>Account Provider: <%= @account.provider %>
-      <p>Account UID: <%= @account.uid %>
-      <p>Account Username: <%= @account.username %>
+        <p>Account number <%= @account.id %><br>
       <% end %>
-    <p>
-    <%= render partial: "partials/social_media" %>
-    <p>User: <%= @user.id %>
-    <p>User Email: <%= @user.email %>
-    <!-- needs to be removed, breaks page when user registers without twitter -->
-    <% @twitter_client.update("#HearUs will find your local representative online, automagically let you Tweet, Faceboook, call them etc. launches tomorrow.") %>
   </div>
 
   <div class="pure-u-1-4">
