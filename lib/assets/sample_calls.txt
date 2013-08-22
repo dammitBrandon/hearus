@@ -1,0 +1,15 @@
+http://congress.api.sunlightfoundation.com/bills/search?
+
+bill_id=@bill_id
+query=@query
+sponsor_id=@bio_giude_id
+
+&fields=bill_id,bill_type,chamber,popular_title,short_title,official_title,urls,history,last_action,sponsor_id,commitee_ids,related_bill_ids,nicknames,keywords,summary,summary_short
+
+history.enacted=false
+
+&apikey=d9836e25aa044e26bf6008212dab2514
+
+http://congress.api.sunlightfoundation.com/bills/search?query=oregon&fields=bill_id,bill_type,chamber,popular_title,short_title,official_title,urls,history,last_action,sponsor_id,commitee_ids,related_bill_ids,nicknames,keywords,summary,summary_short&apikey=d9836e25aa044e26bf6008212dab2514
+
+http://congress.api.sunlightfoundation.com/bills/search?bill_id=s2878-111&apikey=d9836e25aa044e26bf6008212dab2514
