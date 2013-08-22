@@ -11,22 +11,20 @@
       </span>
     <% end %>
       <p>Synchronize accounts here:<br>
-    <%= link_to "/auth/twitter" do %>
-      <span class="icon-stack">
-        <i class="icon-check-empty icon-stack-base"></i>
-        <i class="icon-twitter"></i>
-      </span>
-    <% end %>
-
-    <%= link_to "/auth/facebook" do %>
-      <span class="icon-stack">
-        <i class="icon-check-empty icon-stack-base"></i>
-        <i class="icon-facebook"></i>
-      </span>
-   <% end %>
-
     <p>Email: <%= @user.email %>
     <%= render partial: "partials/geotag" %>
+
+    <% @account = Account.find_by_user_id(session[:user_id]) %>
+      <% if @account %>
+      <p>Synchronize account number <%= @account.id %>:<br>
+      <p>Account Provider: <%= @account.provider %>
+      <p>Account UID: <%= @account.uid %>
+      <p>Account Username: <%= @account.username %>
+      <% end %>
+    <p>
+    <%= render partial: "partials/social_media" %>
+    <p>User: <%= @user.id %>
+    <p>User Email: <%= @user.email %>
   </div>
 
   <div class="pure-u-1-4">
