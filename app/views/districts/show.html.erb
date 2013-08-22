@@ -11,14 +11,34 @@
           <li>Party: <%= party_text(leg) %></li>
           <li>Gender: <%= gender_text(leg) %></li>
           <li>Phone: <%= leg.phone %></li>
-          <li><%= link_to "Website", leg.website %></li>
-          <li><%= link_to "Email Form",leg.webform %></li>
+          <!-- they may not actually have a website -->
+          <% if leg.website.length > 1 %>
+            <li><%= link_to "Website", leg.website, target: "_blank" %></li>
+          <% else %>
+            <li>Website: n/a</li>
+          <% end %>
+          <li><%= link_to "Email Form", leg.webform, target: "_blank" %></li>
           <li>Address: <%= leg.congress_office %></li>
-          <li><%= link_to "Twitter", "https://twitter.com/" + leg.twitter_id %></li>
+          <!-- verified sometimes they don't have Twitter -->
+          <% if leg.twitter_id.length > 1 %>
+            <li><%= link_to "Twitter", "https://twitter.com/" + leg.twitter_id[1..-1], target: "_blank" %></li>
+          <% else %>
+            <li>Twitter: n/a</li>
+          <% end %>
           <!-- <li><leg.bioguide_id></li> -->
-          <li><%= link_to "Wiki",leg.congresspedia_url %></li>
-          <li><%= link_to "Youtube", leg.youtube_url %></li>
-          <li><%= link_to "Facebook", "https://www.facebook/" + leg.facebook_id %></li>
+          <li><%= link_to "Wiki", leg.congresspedia_url, target: "_blank" %></li>
+          <!-- verified sometimes they don't have YouTube -->
+          <% if leg.youtube_url.length > 1 %>
+            <li><%= link_to "YouTube", leg.youtube_url, target: "_blank" %></li>
+          <% else %>
+            <li>YouTube: n/a</li>
+          <% end %>
+          <!-- verified sometimes they don't have Facebook -->
+          <% if leg.facebook_id.length > 1 %>
+            <li><%= link_to "Facebook", "https://www.facebook.com/" + leg.facebook_id, target: "_blank" %></li>
+          <% else %>
+            <li>Facebook: n/a</li>
+          <% end %>
           <li>Born: <%= birthday(leg) %></li>
           <!-- also have access to state_id and district_id -->
         </ul>
