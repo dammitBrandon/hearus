@@ -1,5 +1,6 @@
 class BillsController < ApplicationController
   include SunlightHelper
+  include BillHelper
 
   def find
     @bills = search_query(params[:search])

@@ -25,16 +25,19 @@
         <h5>Legislative History:</h5>
           <ul>
           <% @bill["history"].each do |action| %>
-            <li><%= action[0] %>: <%= action[1] %></li>
+            <li><%= action[0].titleize %>: <%= action[1].to_s.capitalize %></li>
           <% end %>
           </ul>
+        <h5>Related Bills:</h5>
         <ul>
           <% @bill["related_bill_ids"].each do |bill| %>
-            <li><%= link_to bill%></li>
+            <li><%=link_to bill_link(bill),bill_path %></li>
           <% end %>
         </ul>
         <ul>
+          <% if @bill['popular_title'] %>
           <li><%= @bill['popular_title'] %></li>
+          <% end %>
           <li><%= @bill["summary_short"]%></li>
           <li><%= @bill["chamber"].titleize%></li>
         </ul>
