@@ -1,74 +1,37 @@
-<h3><%= @yes_votes = @bill.percent_yes.to_f %></h3>
-  <% @no_votes = @bill.percent_no %>
-  <% @no_opinion_votes = @bill.percent_no_opinion %>
-
   <script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+      ['Votes', 'Yes %', 'No %', 'N/A %'],
+      <% if @bill %>
+        [1, <%= @bill.percent_yes[0..-2].to_f %>, <%= @bill.percent_no[0..-2].to_f %>, <%= @bill.percent_no_opinion[0..-2].to_f %>]
+      <% end %>
+      ]);
 
-			//Width and height
-			var w = 500;
-			var h = 100;
-			var barPadding = 1;
-			
-      var dataset = [ <%= @yes_votes %>, 23, 25 ];
-			
-			//Create SVG element
-			var svg = d3.select("body")
-						.append("svg")
-						.attr("width", w)
-						.attr("height", h);
+  var options = {
+    title: '#HearUs',
+    vAxis: {title: 'Bill',  titleTextStyle: {color: 'red'}}
+  };
 
-			svg.selectAll("rect")
-			   .data(dataset)
-			   .enter()
-			   .append("rect")
-			   .attr("x", function(d, i) {
-			   		return i * (w / dataset.length);
-			   })
-			   .attr("y", function(d) {
-			   		return h - (d * 4);
-			   })
-			   .attr("width", w / dataset.length - barPadding)
-			   .attr("height", function(d) {
-			   		return d * 4;
-			   })
-			   .attr("fill", function(d) {
-					return "rgb(0, 0, " + (d * 10) + ")";
-			   });
-
-			svg.selectAll("text")
-			   .data(dataset)
-			   .enter()
-			   .append("text")
-			   .text(function(d) {
-			   		return d;
-			   })
-			   .attr("text-anchor", "middle")
-			   .attr("x", function(d, i) {
-			   		return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2;
-			   })
-			   .attr("y", function(d) {
-			   		return h - (d * 4) + 14;
-			   })
-			   .attr("font-family", "sans-serif")
-			   .attr("font-size", "11px")
-			   .attr("fill", "white");
-
-
-			
-		</script>
+  var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
+}
+  </script>
 
   <div class="pure-u-1-4">
     &nbsp;
   </div>
 
   <div class="pure-u-1-2">
-    <p>&nbsp;<br>
+    <p class="d3-chart">&nbsp;<br>
       <h4>Bill: <%= link_to view_bill(@bill.id)["short_title"], bill_path(@bill.id) %></h4>
+      <div id='chart_div'></div>
     <ul>
       <h3> Breakdown: </h3>
-      <li>YEA:<%= @bill.percent_yes %></li>
-      <li>NAY:<%= @bill.percent_no %></li>
-      <li>No Opinion:<%= @bill.percent_no_opinion %></li>
+      <li>Yes Votes: <%= @bill.yes.count %></li>
+      <li>No Votes: <%= @bill.no.count %></li>
+      <li>No Opinion: <%= @bill.no_opinion.count %></li>
     </ul>
       <%= flash[:message] %>
       <% if @twitter_client %>
