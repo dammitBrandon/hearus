@@ -16,6 +16,9 @@ Hearus::Application.routes.draw do
 
   resources :data
 
+  resources :tweets 
+    post "/tweets", to: 'tweets#create', as: 'create_tweet'
+
   resources :users
   resources :districts do
     collection do

@@ -1,1 +1,3 @@
-<h5><%= link_to "Back to District", district_path(current_district) %></h5>
+<% if current_district %>
+  <h5><%= link_to "Back to District", district_path(current_district) %></h5>
+<% end %>

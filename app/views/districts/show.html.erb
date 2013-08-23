@@ -4,10 +4,11 @@
 
   <div class="pure-u-1-2">
     <p>&nbsp;<br>
+      <%= flash[:message] %>
       <%= render partial: "partials/issue_search" %>
       <% @legislators.each do |leg| %>
         <ul>
-          <li><%= legislator_title(leg) %></li>
+          <li><h4><%= legislator_title(leg) %></h4></li>
           <li>Party: <%= party_text(leg) %></li>
           <li>Gender: <%= gender_text(leg) %></li>
         <% if leg %><!-- leg conditional actually needed -->
@@ -22,7 +23,11 @@
           <li>Address: <%= leg.congress_office %></li>
           <!-- verified sometimes they don't have Twitter -->
           <% if leg.twitter_id.length > 1 %>
-            <li><%= link_to "Twitter", "https://twitter.com/" + leg.twitter_id[1..-1], target: "_blank" %></li>
+            <li><%= link_to "Twitter Timeline", "https://twitter.com/" + leg.twitter_id[1..-1], target: "_blank" %></li>
+              <%= form_tag create_tweet_path, class: "pure-form" do %>
+              <%= text_area_tag "tweet", leg.twitter_id + " I live in your district and vote on bills with #HearUs", maxlength: 140, required: true, cols: 60, rows: 1 %>
+              <%= submit_tag "Tweet", class: "pure-button pure-button-primary" %>
+              <% end %>
           <% else %>
             <li>Twitter: n/a</li>
           <% end %>
