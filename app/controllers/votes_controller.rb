@@ -8,8 +8,6 @@ class VotesController < ApplicationController
       :user_id => current_user.id,
       :sunlight_id => params[:vote][:sunlight_id])
     if @vote.save
-#      @tweet_vote = "I voted " + params[:vote][:choice] + " using #HearUs"
-#      @twitter_client.update(@tweet_vote)
       redirect_to vote_path(@vote)
     else
       @errors = ["You can't vote twice!"]
@@ -25,8 +23,6 @@ class VotesController < ApplicationController
   def update
     @vote = Vote.find(params[:id])
     @vote.update_attribute(:choice, params[:vote][:choice])
-#    @tweet_vote = "I voted " + params[:vote][:choice] + " using #HearUs"
-#    @twitter_client.update(@tweet_vote)
     redirect_to vote_path(@vote)
   end
 
