@@ -19,5 +19,4 @@ FactoryGirl.define do
     tweeted 1
     choice "Yes"
   end
-
 end

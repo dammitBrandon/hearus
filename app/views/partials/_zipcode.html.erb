@@ -1,4 +1,4 @@
-  <div>&nbsp;<br>
+  <div>
     <%= form_tag set_districts_path, :method => 'post', :class => "pure-form" do %>
     <%= label_tag "zipcode", "Zipcode"%>
     <%= text_field_tag "zipcode", nil, :size => 12, :maxlength => 5, class: "step1", placeholder: "Zip Code", autofocus: true, required: true, pattern: "[0-9]{5}" %>
