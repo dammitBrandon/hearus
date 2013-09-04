@@ -119,7 +119,7 @@ GEM
     multi_json (1.7.9)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
-    neat (1.3.0)
+    neat (1.4.0)
       bourbon (>= 2.1)
       sass (>= 3.2)
     nokogiri (1.6.0)

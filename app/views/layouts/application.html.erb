@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>HearUs</title>
-  <script type='text/javascript' src='https://www.google.com/jsapi'></script>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div>
-    <div>
+  <head>
+    <title>HearUs</title>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container">
 
-    <%= yield %>
+      <%= yield %>
 
-    </div>
-  </div> <!-- end l-content -->
-
-  <footer class="footer">
-  <nav>
+      <footer class="footer">
+      <nav>
       <%= link_to "Home", root_path %>
       <% if !current_user %>
         <%= link_to "Login", new_session_path %>
@@ -27,8 +23,8 @@
         <%= link_to "Logout", logout_path %>
       <% end %>
       <%= link_to "About", about_path, html: {class: "start-tour"} %>
-    </nav >
-  </footer>
-
-</body>
+      </nav >
+      </footer>
+    </div>
+  </body>
 </html>
