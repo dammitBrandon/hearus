@@ -1,0 +1,50 @@
+html, body {
+  font-family: $verdana;
+  font-size: 100%;
+  @include span-columns(12);
+  height: 100%;
+}
+
+/*
+ * main container
+ */
+.container {
+    @include span-columns(6);
+    @include shift(3);
+    height: 100%;
+    h1 {
+  }
+    div {
+      text-align: center;
+      @include outer-container;
+      @include shift(1);
+  }
+}
+
+/*
+ * issue and zip code search boarders
+ */
+input#search, input#zipcode {
+    @include border-top-radius(15px);
+    @include border-bottom-radius(15px);
+    @include border-left-radius(15px);
+    @include border-right-radius(15px);
+    height: 35px;
+    font-size: 100%;
+
+}
+
+input.issues-search-button, input.zipcode-search-button {
+  @include button(pill);
+}
+
+footer {
+  @include outer-container;
+  @include span-columns(4);
+  @include shift(2);
+  display: block;
+  /*margin: 0 auto;*/
+  position: absolute;
+  bottom: 0;
+}
+
