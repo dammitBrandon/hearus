@@ -13,6 +13,7 @@ html, body {
     @include shift(3);
     height: 100%;
     h1 {
+      font-size: 100%;
   }
     div {
       text-align: center;
@@ -37,6 +38,11 @@ input#search, input#zipcode {
 input.issues-search-button, input.zipcode-search-button {
   @include button(pill);
 }
+
+/*
+ * Privacy Policy
+ */
+div.privacy-policy, div.search-description  {opacity: 0;}
 
 footer {
   @include outer-container;

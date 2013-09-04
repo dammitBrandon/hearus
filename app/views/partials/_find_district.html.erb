@@ -6,7 +6,7 @@
     <%= label_tag "city", "City" %>
     <%= text_field_tag "city", nil, placeholder: "City",  required: true %>
     <%= label_tag "state", "State" %>
-    <%= text_field_tag "state", nil, :size => 2, :maxlength => 2, placeholder: "State", required: true %>
+     <%= select_tag :state, options_from_collection_for_select(@states, "abbreviation", "abbreviation"), :prompt => "Choose a state", :class => "pure-button-primary", :id => "state-select", required: true %>
     <%= submit_tag "Go", :class => "pure-button pure-button-primary" %>
   <% end %>
 

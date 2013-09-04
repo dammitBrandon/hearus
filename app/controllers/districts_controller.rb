@@ -16,6 +16,7 @@ class DistrictsController < ApplicationController
   end
 
   def find
+    @states = State.all
   end
 
   def set
