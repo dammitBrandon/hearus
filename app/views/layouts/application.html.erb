@@ -8,23 +8,30 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <div class="page-container">
+    <header>
+    <nav>
+    <% if !current_user %>
+      <%= link_to "Login", new_session_path %>
+      <%= link_to "Register", new_user_path %>
+    <% else %>
+      <%= link_to "Profile", users_path %>
+      <%= link_to "Logout", logout_path %>
+    <% end %>
+    </nav >
+    </header>
     <div class="container">
 
       <%= yield %>
 
-      <footer class="footer">
-      <nav>
-      <%= link_to "Home", root_path %>
-      <% if !current_user %>
-        <%= link_to "Login", new_session_path %>
-        <%= link_to "Register", new_user_path %>
-      <% else %>
-        <%= link_to "Profile", users_path %>
-        <%= link_to "Logout", logout_path %>
-      <% end %>
-      <%= link_to "About", about_path, html: {class: "start-tour"} %>
-      </nav >
-      </footer>
     </div>
+    <footer>
+    <nav>
+    <%= link_to "About", about_path, html: {class: "start-tour"} %>
+    -
+    <%= link_to "Mission", about_path, html: {class: "start-tour"} %>
+    </nav >
+    </footer>
+  </div>
   </body>
 </html>

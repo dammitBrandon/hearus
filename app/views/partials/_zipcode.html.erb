@@ -2,6 +2,6 @@
     <%= form_tag set_districts_path, :method => 'post' do %>
     <%= label_tag "zipcode", ""%>
     <%= text_field_tag "zipcode", nil, :size => 12, :maxlength => 5, class: "step1", placeholder: "Zip Code", required: true, pattern: "[0-9]{5}" %>
-    <%= submit_tag "Go", :class => "zipcode-search-button" %>
+    <%= submit_tag "Go", :class => "button" %>
     <% end %>
   </div>
