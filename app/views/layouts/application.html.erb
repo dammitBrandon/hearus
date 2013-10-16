@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HearUs</title>
+    <title>The HearUs Project</title>
     <script type='text/javascript' src='https://www.google.com/jsapi'></script>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
@@ -11,13 +11,21 @@
     <div class="page-container">
     <header>
     <nav>
+    <div class="logo">
+      <h2><%= link_to "Hear Us", root_path %></h2>
+    </div>
+    <% if !(request.fullpath == '/') %>
+      <%= render partial: "partials/issue_search" %>
+    <% end %>
+    <div class="logbar">
     <% if !current_user %>
-      <%= link_to "Login", new_session_path %>
       <%= link_to "Register", new_user_path %>
+      <%= link_to "Login", new_session_path %>
     <% else %>
       <%= link_to "Profile", users_path %>
       <%= link_to "Logout", logout_path %>
     <% end %>
+  </div>
     </nav >
     </header>
     <div class="container">

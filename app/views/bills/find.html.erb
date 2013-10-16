@@ -1,15 +1,13 @@
-<div>
-    <h2>HearUs</h2>
-    <%= render partial: "partials/issue_search" %>
-    <ul>
+    <ul class='bill-search'>
     <% @bills[0..5].each do |bill| %>
-      <li><%= link_to bill["short_title"], bill_path(bill["bill_id"]) %></li>
-      <li><%= bill["chamber"].titleize + " Bill: " + bill["bill_id"] %></li>
-      <li><%= "Purpose: " + bill["official_title"] %></li>
-      <li><%= link_to "OpenCongress", bill["urls"]["opencongress"], target: "_blank" %></li>
-      <li><%= bill["summary_short"] || "No summary available" %></li>
+      <section class="bill">
+      <h3><%= link_to bill["short_title"], bill_path(bill["bill_id"]) %></h3>
+      <span class="number"><%= bill["chamber"].titleize + " Bill: " + bill["bill_id"] %></span>
+      <li><%= bill["official_title"] %></li>
+      <li class="summary"><%= bill["summary_short"] || "No summary available" %></li>
+      <%= link_to "OpenCongress", bill["urls"]["opencongress"], target: "_blank", class: "open-congress" %>
       <br/>
       <!-- all available fields, note that on some of these fields may be blank depending on the bill -->
+      </section>
     <% end %>
     <ul>
-  </div>
