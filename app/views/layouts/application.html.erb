@@ -11,10 +11,10 @@
     <div class="page-container">
     <header>
     <nav>
+    <% if !(request.fullpath == '/') %>
     <div class="logo">
       <h2><%= link_to "Hear Us", root_path %></h2>
     </div>
-    <% if !(request.fullpath == '/') %>
       <%= render partial: "partials/issue_search" %>
     <% end %>
     <div class="logbar">
