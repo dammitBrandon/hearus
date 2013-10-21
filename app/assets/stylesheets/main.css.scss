@@ -43,8 +43,8 @@ a {
     margin-top: 20%;
     padding-top: 5%;
     text-align: center;
-    /*    @include outer-container; */
-    @include shift(1);
+    /*    @include outer-container;
+    @include shift(1); */
 
       .logo {
         padding-bottom: 5%;
@@ -133,7 +133,7 @@ footer {
   nav {
     @include span-columns(5 of 12);
     @include omega;
-    @include shift(5.5);
+    @include shift(5);
   }
 }
 
