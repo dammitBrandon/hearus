@@ -1,14 +1,14 @@
-
- <p>&nbsp;<br>
-  <%= form_tag set_districts_path, :method => 'post', :class => "pure-form pure-form-stacked" do %>
-    <%= label_tag "address", "Address" %>
-    <%= text_field_tag "address", nil, placeholder: "Street Address", autofocus: true%>
-    <%= label_tag "city", "City" %>
+  <%= form_tag set_districts_path, :method => 'post', :class => "" do %>
+    <%= label_tag "address", "" %>
+    <%= text_field_tag "address", nil, placeholder: "Street Address", autofocus: true %>
+    <%= label_tag "city", "" %>
     <%= text_field_tag "city", nil, placeholder: "City",  required: true %>
-    <%= label_tag "state", "State" %>
-     <%= select_tag :state, options_from_collection_for_select(@states, "abbreviation", "abbreviation"), :prompt => "Choose a state", :class => "pure-button-primary", :id => "state-select", required: true %>
-    <%= submit_tag "Go", :class => "pure-button pure-button-primary" %>
+    <%= label_tag "state", "" %>
+    <%= select_tag :state, options_from_collection_for_select(@states, "abbreviation", "abbreviation"), :prompt => "Choose a state", :class => "",
+      :id => "state-select", required: true %>
+    <%= submit_tag "Go", :class => "" %>
   <% end %>
 
+  <%= render partial: "partials/zip_plus_4" %>
   <%= render partial: "partials/geotag" %>
   <%= render partial: "partials/location_faq" %>

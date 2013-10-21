@@ -1,7 +1,7 @@
 <div class="issues-search">
   <%= form_tag("/bills/find", method: "get") do %>
     <%= label_tag(:search, "") %>
-    <%= text_field_tag(:search, nil, autofocus: true, placeholder: "Find an Issue") %>
+    <%= text_field_tag(:search, nil, autofocus: true, placeholder: "Find an Issue", required: true ) %>
     <%= submit_tag("Search", class: "button") %>
   <% end %>
 </div>
