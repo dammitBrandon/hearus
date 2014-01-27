@@ -19,11 +19,7 @@
 }
   </script>
 
-  <div class="pure-u-1-4">
-    &nbsp;
-  </div>
-
-  <div class="pure-u-1-2">
+  <div>
     <p class="d3-chart">&nbsp;<br>
       <h4>Bill: <%= link_to view_bill(@bill.id)["short_title"], bill_path(@bill.id) %></h4>
       <div id='chart_div'></div>
@@ -42,8 +38,4 @@
         <%= submit_tag "Tweet", class: "pure-button pure-button-primary", disabled: (@vote.tweeted == 1) %>
         <% end %>
       <% end %>
-  </div>
-
-  <div class="pure-u-1-4">
-    &nbsp;
   </div>

@@ -1,4 +1,4 @@
-<p>&nbsp;<br>
+<p>
   <%= link_to "#", class: "start-register-tour" do %>
     <span class="icon-stack">
       <i class="icon-circle-blank icon-stack-base"></i>
@@ -8,7 +8,8 @@
 </p>
 <p>Login with:
   <%= render partial: "partials/social_media" %>
-  <br>Or register your email with us:
+  <br>
+  Or register your email with us:
    <%= form_for @user, :url => (@user.new_record? ? users_path : user_path(@user)), html: {class: "pure-form pure-form-stacked"} do |f| %>
      <%= f.label :email, "Email" %>
      <%= f.text_field :email, placeholder: "Email", class: "step1", autofocus: true %>

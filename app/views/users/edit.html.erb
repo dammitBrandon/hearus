@@ -1,14 +1,10 @@
-<div class="pricing-tables pure-g-r">
-  <div class="pure-u-1-4">
-    &nbsp;
-  </div>
+<div>
 
-  <div class="pure-u-1-2">
+  <div>
     <% @errors.each do |error| %>
       <p><%= error %></p>
     <% end %>
 
-    <p>&nbsp;<br>
     <%= form_for @user, html: {class: "pure-form pure-form-stacked"} do |f| %>
       <legend>Update</legend>
       <label for="email" style="color:white;">Email</label>
@@ -20,8 +16,3 @@
       <%= f.submit "Submit", class: "pure-button pure-button-primary" %>
     <% end %>
   </div>
-
-  <div class="pure-u-1-4">
-    &nbsp;
-  </div>
-</div>

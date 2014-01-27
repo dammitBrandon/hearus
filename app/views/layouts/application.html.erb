@@ -1,35 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>HearUs</title>
-  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.1/pure-min.css">
-  <script type='text/javascript' src='https://www.google.com/jsapi'></script>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div style="margin-bottom:80px;" class="l-content">
-    <div class="pure-g-r">
+  <head>
+    <title>The HearUs Project</title>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="page-container">
+    <header>
+    <nav>
+    <% if !(request.fullpath == '/') %>
+    <div class="logo">
+      <h2><%= link_to "Hear Us", root_path %></h2>
+    </div>
+      <%= render partial: "partials/issue_search" %>
+    <% end %>
+    <div class="logbar">
+    <% if !current_user %>
+      <%= link_to "Register", new_user_path %>
+      <%= link_to "Login", new_session_path %>
+    <% else %>
+      <%= link_to "Profile", users_path %>
+      <%= link_to "Logout", logout_path %>
+    <% end %>
+  </div>
+    </nav >
+    </header>
+    <div class="container">
 
-    <%= yield %>
+      <%= yield %>
 
     </div>
-  </div> <!-- end l-content -->
-
-  <div class="footer">
-    <p class="l-box">
-      <%= link_to "Home", root_path %>
-      <% if !current_user %>
-        <%= link_to "Login", new_session_path %>
-        <%= link_to "Register", new_user_path %>
-      <% else %>
-        <%= link_to "Profile", users_path %>
-        <%= link_to "Logout", logout_path %>
-      <% end %>
-      <%= link_to "About", about_path, html: {class: "start-tour"} %>
-    </p>
+    <footer>
+    <nav>
+    <%= link_to "About", about_path, html: {class: "start-tour"} %>
+    -
+    <%= link_to "Mission", about_path, html: {class: "start-tour"} %>
+    </nav >
+    </footer>
   </div>
-
-</body>
+  </body>
 </html>

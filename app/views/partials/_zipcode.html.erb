@@ -1,8 +1,7 @@
-  <div>&nbsp;<br>
-    <%= form_tag set_districts_path, :method => 'post', :class => "pure-form" do %>
-    <%= label_tag "zipcode", "Zipcode"%>
-    <%= text_field_tag "zipcode", nil, :size => 12, :maxlength => 5, class: "step1", placeholder: "Zip Code", autofocus: true, required: true, pattern: "[0-9]{5}" %>
-    <%= submit_tag "Go", :class => "pure-button pure-button-primary" %>
+  <div class="zipcode-search">
+    <%= form_tag set_districts_path, :method => 'post' do %>
+    <%= label_tag "zipcode", ""%>
+    <%= text_field_tag "zipcode", nil, :size => 12, :maxlength => 5, class: "step1", placeholder: "Zip Code", required: true, pattern: "[0-9]{5}" %>
+    <%= submit_tag "Go", :class => "button" %>
     <% end %>
-    <%= render partial: "partials/home_tour" %>
   </div>

@@ -1,25 +1,10 @@
-  <div class="pure-u-1-4">
-    &nbsp;
-  </div>
-
-  <div class="pure-u-1-2">
-    <p>&nbsp;<br>
-    <%= link_to "#", class: "start-profile-tour" do %>
-      <span class="icon-stack">
-        <i class="icon-circle-blank icon-stack-base"></i>
-        <i class="icon-question"></i>
-      </span>
-    <% end %>
-      <p>Synchronize accounts<br>
-      <p><%= render partial: "partials/social_media" %>
-      <p>User ID: <%= @user.id %>
-      <p>Email: <%= @user.email %>
+<div>
+    <p>Synchronize accounts</p>
+      <p><%= render partial: "partials/social_media" %></p>
+      <p>User ID: <%= @user.id %></p>
+      <p>Email: <%= @user.email %></p>
       <% @account = Account.find_by_user_id(session[:user_id]) %>
       <% if @account %>
-        <p>Account number <%= @account.id %><br>
+        <p>Account number <%= @account.id %></p>
       <% end %>
-  </div>
-
-  <div class="pure-u-1-4">
-    &nbsp;
   </div>

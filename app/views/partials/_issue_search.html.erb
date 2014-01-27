@@ -1,7 +1,7 @@
-<div class="search-bar">
-  <%= form_tag("/bills/find", method: "get", class: "pure-form") do %>
-    <%= label_tag(:search, "Search for:") %>
-    <%= text_field_tag(:search) %>
-    <%= submit_tag("Search", class: "pure-button pure-button-primary") %>
+<div class="issues-search">
+  <%= form_tag("/bills/find", method: "get") do %>
+    <%= label_tag(:search, "") %>
+    <%= text_field_tag(:search, nil, autofocus: true, placeholder: "Find an Issue", required: true ) %>
+    <%= submit_tag("Search", class: "button") %>
   <% end %>
 </div>

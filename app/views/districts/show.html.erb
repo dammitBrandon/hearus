@@ -1,11 +1,5 @@
-  <div class="pure-u-1-4">
-    &nbsp;
-  </div>
-
-  <div class="pure-u-1-2">
-    <p>&nbsp;<br>
+  <div>
       <%= flash[:message] %>
-      <%= render partial: "partials/issue_search" %>
       <% @legislators.each do |leg| %>
         <ul>
           <li><h4><%= legislator_title(leg) %></h4></li>
@@ -50,8 +44,4 @@
         <% end %> <!-- end of leg conditional -->
         </ul>
       <% end %>
-  </div>
-
-  <div class="pure-u-1-4">
-    &nbsp;
   </div>

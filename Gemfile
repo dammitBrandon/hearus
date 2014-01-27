@@ -23,6 +23,8 @@ gem 'memcached'
 gem 'kgio'
 gem 'dalli'
 gem 'nokogiri'
+gem 'bourbon'
+gem 'neat'
 
 # Gems used only for assets and not required
 # in production environments by default.

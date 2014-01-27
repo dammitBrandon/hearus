@@ -1,0 +1,7 @@
+  <%= form_tag set_districts_path, method: 'post', class: "" do %>
+    <%= label_tag "zipcode", "" %>
+    <%= text_field_tag "Zipcode", nil, placeholder: "Zipcode", required: true %>
+    <%= label_tag "plus_four", "" %>
+    <%= text_field_tag "plus_four", nil, placeholder: "+ 4", required: true %>
+    <%= submit_tag "Find District" %>
+  <% end %>
