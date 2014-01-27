@@ -8,6 +8,7 @@ development:
   database: hearus_development
   pool: 5
   timeout: 5000
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -17,9 +18,11 @@ test:
   database: hearus_test
   pool: 5
   timeout: 5000
+  host: localhost
 
 production:
   adapter: postgresql
   database: hearus_production
   pool: 5
   timeout: 5000
+  host: localhost
